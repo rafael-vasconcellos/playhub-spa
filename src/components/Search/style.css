@@ -1,0 +1,24 @@
+section > #search {
+    height: 2.5rem;
+    width: 50%;
+    border-radius: 999px;
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    left: 25%;
+    padding: 0 20px;
+    
+}
+
+#search:focus-visible {
+    outline: 0;
+}
+
+section > #search ~ div:has(div) {
+    position: fixed;
+    padding-top: 7%;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    z-index: 1;
+}
