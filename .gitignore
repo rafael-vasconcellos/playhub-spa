@@ -26,3 +26,4 @@ dist-ssr
 # project's
 
 src/config.json
+src/guest_auth.tsx
