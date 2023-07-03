@@ -32,13 +32,33 @@ const Category:React.FC<categoryProps> = function( {id, name, type} ) {
     }, [] )
 
     return (
-        <div className='category my-5'>
-                <h1 className={`${skeleton} p-1 inline-block text-2xl font-bold`}>{type==='tv'? 'Séries de ' : 'Filmes de '}{name}</h1>
-                <div className='carrosel-itens overflow-x-hidden p-3' style={ {maxWidth: '98vw'} }>
-                        <div className='flex gap-5 items-start'>
+        <div className='category'>
+                <h1 className={`${skeleton} px-2 inline-block text-2xl font-bold`}>{type==='tv'? 'Séries de ' : 'Filmes de '}{name}</h1>
+                <div className='carrosel-itens flex' style={ {maxWidth: '98vw'} }>
+                        <div className="cursor-pointer h-full pt-28 px-1">
+                            <button className="bg-zinc-700 rounded-full px-4 pb-3 pt-2 font-bold text-4xl"
+                             onClick={(e:any) => {
+                                let el = e.target.parentElement?.nextSibling
+                                el.scrollBy(-el.offsetWidth, 0)
+                            } }>
+                                {"<"}
+                            </button>
+                        </div>
+
+                        <div className='flex gap-5 items-start py-5 px-3 overflow-x-scroll overflow-y-visible scroll-smooth'>
 
                             {contents.map(e => <Item title={e.title ?? e.name} pic={e.backdrop_path ?? e.poster_path} id={e.id} type={type} key={e.id} />)}
 
+                        </div>
+
+                        <div className="cursor-pointer h-full pt-28 pl-3">
+                            <button className="bg-zinc-700 rounded-full px-4 pb-3 pt-2 font-bold text-4xl"
+                             onClick={(e:any) => {
+                                let el = e.target.parentElement?.previousSibling
+                                el.scrollBy(el.offsetWidth, 0)
+                            } }>
+                                {">"}
+                            </button>
                         </div>
                 </div>
         </div>

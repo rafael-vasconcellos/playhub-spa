@@ -22,7 +22,7 @@ const Details:React.FC<detailProps> = function( { content } ) {
 
     const screen = {
         normal: [
-          'absolute -top-6', 
+          'absolute -top-5 -left-14', 
           'w-72', 
           'h-40 bg-y-center', 
           '',

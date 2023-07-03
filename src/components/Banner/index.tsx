@@ -37,7 +37,7 @@ export default function Banner() {
     }, [] )
 
     useEffect(() => {
-        const interval = setInterval(() => {
+        function func() {
             if (contents) {
                 let item = contents.results[Math.round(Math.random()*contents.results.length)]
                 if (item) {
@@ -57,10 +57,14 @@ export default function Banner() {
                     }
                 }
             }
-        }, 7000 )
+        }
+
+        const timeout = setTimeout(func, 3000)
+        const interval = setInterval(func, 7000 )
 
         return () => {
             clearInterval(interval)
+            clearTimeout(timeout)
         }
     }, [] )
     
