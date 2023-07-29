@@ -568,12 +568,12 @@ video {
   position: relative;
 }
 
-.-left-16 {
-  left: -4rem;
+.-left-14 {
+  left: -3.5rem;
 }
 
-.-top-6 {
-  top: -1.5rem;
+.-top-4 {
+  top: -1rem;
 }
 
 .left-0 {
@@ -600,12 +600,8 @@ video {
   top: 0.5rem;
 }
 
-.-top-5 {
-  top: -1.25rem;
-}
-
-.-left-14 {
-  left: -3.5rem;
+.-top-2 {
+  top: -0.5rem;
 }
 
 .z-10 {
@@ -620,6 +616,10 @@ video {
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
 
 .mr-2 {
@@ -794,6 +794,10 @@ video {
   overflow-x: scroll;
 }
 
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
 .rounded-full {
   border-radius: 9999px;
 }
@@ -937,22 +941,8 @@ video {
   padding-bottom: 2rem;
 }
 
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
-
-.py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-
 .pb-1 {
   padding-bottom: 0.25rem;
-}
-
-.pb-10 {
-  padding-bottom: 2.5rem;
 }
 
 .pb-3 {
@@ -973,26 +963,6 @@ video {
 
 .pt-28 {
   padding-top: 7rem;
-}
-
-.pt-5 {
-  padding-top: 1.25rem;
-}
-
-.pb-16 {
-  padding-bottom: 4rem;
-}
-
-.pb-20 {
-  padding-bottom: 5rem;
-}
-
-.pb-24 {
-  padding-bottom: 6rem;
-}
-
-.pb-28 {
-  padding-bottom: 7rem;
 }
 
 .text-2xl {

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import config from '../../config.json'
+import { API_KEY } from '../../config'
+import { useQuery } from 'react-query'
 
 export default function Banner() {
     const [skeleton, setSkeleton] = useState('text-zinc-500 bg-zinc-500')
@@ -8,10 +9,19 @@ export default function Banner() {
         banner: '',
         type: 'Tipo',
         title: 'Título',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora ipsum consequatur impedit nostrum officia a sint id pariatur veniam, natus quibusdam porro error commodi qui nam itaque quod iusto quo.'
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora ipsum consequatur impedit nostrum officia a sint id pariatur veniam, natus quibusdam porro error commodi qui nam itaque quod iusto quo.',
+
     } )
 
-    let contents:any
+    const { data } = useQuery('get trendings', async() => {
+            return await fetch(`https://api.themoviedb.org/3/trending/all/day?language=pt-BR`, {
+                headers: {"Authorization": API_KEY}
+            } ).then(res => res.json())
+
+        }, { staleTime: 1000*180 /* 3min */ }
+    )
+
+
 
     function resetAnim(el:any) {
         el.style.animation = 'none'
@@ -19,37 +29,20 @@ export default function Banner() {
         el.style.animation = ''
     }
 
-    useEffect( () => {
-        let xml:XMLHttpRequest | undefined = new XMLHttpRequest()
-        xml.open('GET', `https://api.themoviedb.org/3/trending/all/day?language=pt-BR`)
-        xml.setRequestHeader('accept', 'application/json')
-        xml.setRequestHeader('Authorization', config.api_key)
-        xml.onload = function() { if (xml?.status===200) {
-            let res = JSON.parse(xml.response)
-            contents = res
-        } }
-        xml.send()
-
-        return () => {
-            xml = undefined
-        }
-
-    }, [] )
-
     useEffect(() => {
         function func() {
-            if (contents) {
-                let item = contents.results[Math.round(Math.random()*contents.results.length)]
+            if (data) {
+                let item = data.results[Math.round(Math.random()*data.results.length)]
                 if (item) {
                     let obj = {
                         banner: `https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${item.poster_path}`,
-                        type: item.media_type.capi==='movie'? 'Filme': 'Série',
+                        type: item.media_type === 'movie'? 'Filme': 'Série',
                         title: item.title ?? item.name,
                         description: item.overview
                     }
-                    document.querySelector('.text')?.classList.add('animate-emerge')
+                    document.querySelector('.b-description')?.classList.add('animate-emerge')
                     resetAnim( document.querySelector('.banner') )
-                    resetAnim( document.querySelector('.text') )
+                    resetAnim( document.querySelector('.b-description') )
                     setDisplay(() => obj )
                     if (skeleton && animate==='animate-pulse') {
                         setSkeleton(() => '')
@@ -66,13 +59,14 @@ export default function Banner() {
             clearInterval(interval)
             clearTimeout(timeout)
         }
-    }, [] )
-    
+
+    }, [data] )
+
 
     return (
-        <section className={`banner w-screen h-screen bg-zinc-950 bg-contain bg-no-repeat bg-center ${animate}`} style={{backgroundImage: `url(${display.banner})`}} >
+        <section className={`banner w-screen h-screen bg-zinc-950 bg-contain bg-no-repeat bg-center ${animate} mb-6`} style={{backgroundImage: `url(${display.banner})`}} >
             <div className='w-full h-full bg-zinc-950/[0.4] flex items-end'>
-                <div className="text w-1/2 flex flex-col gap-10 px-10 py-20">
+                <div className="b-description w-1/2 flex flex-col gap-10 px-10 py-20">
                     <h2 className={`w-fit text-xl ${skeleton}`}>{display.type}</h2>
                     <h1 className={`text-6xl font-bold ${skeleton}`}>{display.title}</h1>
                     <p className={skeleton}>{display.description}</p>

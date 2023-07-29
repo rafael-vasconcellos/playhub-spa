@@ -1,5 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { QueryClientProvider, QueryClient } from 'react-query'
+const queryClient = new QueryClient()
+
 import { filmes, series } from './genres.tsx'
 import Profile from './components/Profile'
 import Banner from './components/Banner'
@@ -20,11 +23,12 @@ n = n.sort(() => Math.round(Math.random()))
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-
-    <Search />
-    <Profile href={'/src/assets/profile.jpg'} />
-    <Banner />
-    { n.map((e: genre) => <Category id={e.id} name={e.name} type={e.type} key={`${e.type} ${e.name}`} /> ) }
+      <QueryClientProvider client={queryClient}>
+            <Search />
+            <Profile href={'/src/assets/profile.jpg'} />
+            <Banner />
+            { n.map((e: genre) => <Category id={e.id} type={e.type} name={e.name} key={`discover shows ${e.type} ${e.name}`} /> ) }
+      </QueryClientProvider>
 
   </React.StrictMode>,
 )

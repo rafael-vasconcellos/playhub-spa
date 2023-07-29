@@ -25,5 +25,7 @@ dist-ssr
 
 # project's
 
-src/config.json
+src/api
+src/api/*.env
+src/config.ts
 src/guest_auth.tsx

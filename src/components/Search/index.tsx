@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './style.css'
-import config from '../../config.json'
+import { API_KEY } from '../../config'
 import { filmes, series } from '../../genres.tsx'
 import Item from '../Item/index.tsx'
 
@@ -27,7 +27,7 @@ export default function Search() {
         let xml = new XMLHttpRequest()
         xml.open('GET', url)
         xml.setRequestHeader('accept', 'application/json')
-        xml.setRequestHeader('Authorization', config.api_key)
+        xml.setRequestHeader('Authorization', API_KEY)
         xml.onload = function() { if (xml?.status === 200) {
             let res = JSON.parse(xml.response)?.results
             res.forEach( (indice:any) => {indice.type = type} )

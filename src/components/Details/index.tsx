@@ -1,9 +1,11 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useQuery } from "react-query"
+import { API_KEY } from "../../config"
 
 type Content = {
     id: number | null,
     title: string, // ou name
-    genres: any[],
+    genres: {name: string, id: number | string}[],
     adult: boolean,
     overview: string,
     vote_average: number | string,
@@ -13,37 +15,82 @@ type Content = {
     poster_path: string,
     backdrop_path: string,
     video: string,
-    production_companies: any[]
+    production_companies: {name: string}[]
 }
 
-type detailProps = {content: Content}
+type detailProps = {type: string | undefined, id: number | undefined}
 
-const Details:React.FC<detailProps> = function( { content } ) { 
-
+const Details:React.FC<detailProps> = function( { type, id } ) { 
     const screen = {
-        normal: [
-          'absolute -top-5 -left-14', 
-          'w-72', 
-          'h-40 bg-y-center', 
-          '',
-          'hidden' ],
-        full: [
-          'w-screen h-screen fixed top-0 left-0', 
-          'w-1/2', 
-          'h-72', 
-          'hidden',
-          '' ]
+        normal: {
+            popup_bg: 'absolute -top-2 -left-14', 
+            container: 'w-72', 
+            banner: 'h-40 bg-y-center', 
+            stats: '',
+            more: 'hidden' 
+        },
+
+        full: {
+            popup_bg: 'w-screen h-screen fixed top-0 left-0', 
+            container: 'w-1/2', 
+            banner: 'h-72', 
+            stats: 'hidden',
+            more: '' 
+        }
     }
-    const [screen_status, setScreen] = useState( screen.normal )
+
+    const [ skeleton, setSkeleton ] = useState('text-zinc-500 bg-zinc-500 animate-pulse')
+
+    const [ screen_status, setScreen ] = useState( screen.normal )
+    const [ content, setContent ] = useState( {
+          id: 0,
+          title: '', // ou name
+          genres: [{name: 'genre1', id: 0}, {name: 'genre2', id: 0}],
+          adult: false,
+          overview: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, placeat veniam quas dolor facilis soluta, consectetur magnam ut eos architecto similique eius porro amet possimus commodi rerum nesciunt facere eum.',
+          vote_average: 7.814,
+          popularity: 2947.91,
+          runtime: 92,
+          release_date: '2022',
+          poster_path: '',
+          backdrop_path: '',
+          video: '',
+          production_companies: [ {name: ''}, {name: ''} ]
+
+          // tagline?
+    } as Content )
+
+
+    const { refetch } = useQuery(`${id} content details`, async() => {
+              // &append_to_response=videos
+              //await new Promise( resolve => setTimeout(resolve, 3000) )
+              return await fetch(`https://api.themoviedb.org/3/${type}/${id}?language=pt-BR`, {
+                  headers: { "Authorization": API_KEY }
+              } ).then(res => res.json()).then(res => { 
+                  setSkeleton('')
+                  setContent(res)
+                  return res
+              } )
+
+        }, { staleTime: 1000*180 /* 3min */, enabled: !content.id }
+    )
+
+
+    useEffect( () => {
+        if (!content.id) {
+            refetch()
+        }
+    }, [content.id])
+
 
     return (
-        <div className={`${screen_status[0]} details animate-scale z-10 bg-zinc-950/40 flex justify-center items-center cursor-default`}
+        <div className={`${screen_status.popup_bg} details animate-scale z-10 bg-zinc-950/40 flex justify-center items-center cursor-default`}
          onClick={   () => setScreen( () => screen.normal )   }> {/* fundo preto */}
-                <div className={`${screen_status[1]} h-fit bg-zinc-800 rounded-b-2xl`} 
+                <div className={`${screen_status.container} h-fit bg-zinc-800 rounded-b-2xl`} 
                  onClick={ (e) => e.stopPropagation() }> {/* container */}
 
 
-                      <div className={`w-full ${screen_status[2]} bg-zinc-500 bg-cover`} style={ {backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${content.poster_path})`} }></div> {/* banner */}
+                      <div className={`w-full ${screen_status.banner} ${skeleton} bg-zinc-500 bg-cover`} style={ {backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${content.poster_path})`} }></div> {/* banner */}
                       <div className="flex justify-between w-full px-2 py-3"> {/* botões */}
                             <div className="flex gap-2">
                                     <button className="p-2 rounded-full border-zinc-600 border-2">
@@ -64,27 +111,29 @@ const Details:React.FC<detailProps> = function( { content } ) {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                                 </svg>
                             </button>
-                      </div>
+                      </div> {/* botões */}
 
 
                       <div className="relative">
                           <div className="w-full px-3 py-4"> {/* primeira coluna */}
                                   <div>
-                                      <span className={`mr-2 font-bold p-1 ${content.adult? "bg-zinc-950" : "bg-sky-500"} text-zinc-100`}>PG-{content.adult? "18":"13"}</span> 
-                                      {Math.floor(content.runtime/60)}h {content.runtime%60 !== 0? content.runtime%60 : '00'}min <br/>
+                                      {content.id && <span className={`mr-2 font-bold p-1 ${content.adult? "bg-zinc-950" : "bg-sky-500"} text-zinc-100`}>PG-{content.adult? "18":"13"}</span> }
+                                      <span className={skeleton}> {Math.floor(content.runtime/60)}h {content.runtime%60 !== 0? content.runtime%60 : '00'}min </span><br/>
                                   </div>
 
-                                  <p className="my-1">{content.release_date?.slice(0, 4)}</p>
+                                  <p className={`my-1 ${skeleton}`}>{content.release_date?.slice(0, 4)}</p>
 
-                                  <ul className={`flex gap-2 my-2 flex-wrap ${screen_status[3]}`}>
-                                          {content.genres.map(e => <li key={e.id}>{e.name}</li>)}
+                                  <ul className={`flex gap-2 my-2 flex-wrap ${screen_status.stats}`}>
+                                          {content.genres.map(e => <li className={skeleton} key={e.id? e.id : Math.random()}> {e.name} </li>)}
                                   </ul>
 
-                                  <div className="py-2">Média: {content.vote_average}<br/>Popularidade: {content.popularity}</div>
-                                  <p className={`${screen_status[4]} py-2`}>{content.overview}</p>
+                                  <div className={`py-2 ${skeleton}`}>Média: {content.vote_average}<br/>Popularidade: {content.popularity}</div>
+                                  <p className={`${screen_status.more} py-2`}>{content.overview}</p>
                           </div>
 
-                          <div className={`${screen_status[4]} absolute top-0 right-0 w-1/2 px-2 py-8 flex flex-col gap-2`}> {/* segunda coluna */}
+
+                          {/* segunda coluna */}
+                          <div className={`${screen_status.more} absolute top-0 right-0 w-1/2 px-2 py-8 flex flex-col gap-2`}>
                                   <div>
                                       Produção: {content.production_companies.map(e => {
                                           if (content.production_companies.indexOf(e) !== content.production_companies.length-1) { 
@@ -107,7 +156,7 @@ const Details:React.FC<detailProps> = function( { content } ) {
                       </div>
 
                 </div> {/* /container */}
-        </div>
+        {/* fundo preto */} </div>
     )
 }
 
