@@ -7,18 +7,22 @@ section > #search {
     top: 10px;
     left: 25%;
     padding: 0 20px;
-    
 }
 
 #search:focus-visible {
     outline: 0;
 }
 
-section > #search ~ div:has(div) {
+/*.results:has(div), div:has(svg:not(.hidden)) ~ .results */
+section:has(.results > div), section:has(div > svg) {
     position: fixed;
     padding-top: 7%;
     width: 100vw;
+    z-index: 1;
     height: 100vh;
     overflow-y: scroll;
-    z-index: 1;
+}
+
+body:has(.results > div), body:has(div > svg) {
+    overflow-y: hidden;
 }

@@ -64,7 +64,7 @@ const Details:React.FC<detailProps> = function( { type, id } ) {
     const { refetch } = useQuery(`${id} content details`, async() => {
               // &append_to_response=videos
               //await new Promise( resolve => setTimeout(resolve, 3000) )
-              return await fetch(`https://api.themoviedb.org/3/${type}/${id}?language=pt-BR`, {
+              return fetch(`https://api.themoviedb.org/3/${type}/${id}?language=pt-BR`, {
                   headers: { "Authorization": API_KEY }
               } ).then(res => res.json()).then(res => { 
                   setSkeleton('')

@@ -16,7 +16,7 @@ const Category:React.FC<categoryProps> = function( {id, type, name} ) {
     //const { data, isFetching } = 
     useQuery(`discover shows ${type} ${name}`, async() => {
             await new Promise( resolve => setTimeout(resolve, 3000) )
-            return await fetch(`https://api.themoviedb.org/3/discover/${type}?include_adult=true&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&with_genres=${id}`, {
+            return fetch(`https://api.themoviedb.org/3/discover/${type}?include_adult=true&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&with_genres=${id}`, {
                 headers: {"Authorization": API_KEY}
             } ).then(res => res.json()).then(res => { 
                 setContents(() => res.results)
