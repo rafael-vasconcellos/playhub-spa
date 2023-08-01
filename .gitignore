@@ -28,4 +28,4 @@ dist-ssr
 src/api
 src/api/*.env
 src/config.ts
-src/guest_auth.tsx
+src/guest_auth.ts

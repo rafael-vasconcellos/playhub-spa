@@ -4,6 +4,5 @@ versão do repositório playhub com react e tailwindcss, usando a API do TMDB (T
 
 # To Do
 
-React Router
 Post Requests
 Deploy
