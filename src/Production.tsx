@@ -9,8 +9,13 @@ export default function Production() {
 
 
 // score, total de votos, nomes alternativos, trailer, status, ano, temporadas, duração, recomendados
-// imdb
+// mídia, c.indicativa, reviews, sua avaliação, popularidade, staff, opções de coleção, crítica, awards, generos
+// bilheteria, 
+// detalhes: Data de lançamento, Países de origem, Centrais de atendimento oficiais (redes sociais), Idiomas, Também conhecido como, Locações de filme, Empresas de produção
+
 // tmdb
+
+
 
 /*
 
