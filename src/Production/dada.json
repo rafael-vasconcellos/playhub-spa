@@ -1,0 +1,1031 @@
+{
+    "adult": false,
+    "backdrop_path": "/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg",
+    "belongs_to_collection": null,
+    "budget": 100000000,
+    "genres": [
+      {
+        "id": 16,
+        "name": "Animação"
+      },
+      {
+        "id": 10751,
+        "name": "Família"
+      },
+      {
+        "id": 12,
+        "name": "Aventura"
+      },
+      {
+        "id": 14,
+        "name": "Fantasia"
+      },
+      {
+        "id": 35,
+        "name": "Comédia"
+      }
+    ],
+    "homepage": "https://cuevana3.it/pelicula/the-super-mario-bros-movie-2023/",
+    "id": 502356,
+    "imdb_id": "tt6718170",
+    "original_language": "en",
+    "original_title": "The Super Mario Bros. Movie",
+    "overview": "Os irmãos Mario e Luigi, de ascendência italiana, vivem em Brooklyn (Nova Iorque), onde trabalham como canalizadores. Certo dia, durante um serviço de reparação de uma conduta de água, são sugados por um tubo e transportados para o Reino Cogumelo, um universo paralelo governado pela Princesa Peach. Sem saber do paradeiro do irmão, Mario vai ter de aprender a sobreviver naquele lugar, adquirindo capacidades bizarras mas que serão grandes mais-valias para destruir os planos de Bowser, um verdadeiro vilão que tenciona dominar o mundo.",
+    "popularity": 878.379,
+    "poster_path": "/ktU3MIeZtuEVRlMftgp0HMX2WR7.jpg",
+    "production_companies": [
+      {
+        "id": 33,
+        "logo_path": "/8lvHyhjr8oUKOOy2dKXoALWKdp0.png",
+        "name": "Universal Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 6704,
+        "logo_path": "/fOG2oY4m1YuYTQh4bMqqZkmgOAI.png",
+        "name": "Illumination",
+        "origin_country": "US"
+      },
+      {
+        "id": 12288,
+        "logo_path": "/e4dQAqZD374H5EuM0W1ljEBWTKy.png",
+        "name": "Nintendo",
+        "origin_country": "JP"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "JP",
+        "name": "Japan"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2023-04-05",
+    "revenue": 1347013866,
+    "runtime": 92,
+    "spoken_languages": [
+      {
+        "english_name": "English",
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Released",
+    "tagline": "Vamos lá!",
+    "title": "Super Mario Bros.: O Filme",
+    "video": false,
+    "vote_average": 7.794,
+    "vote_count": 6048,
+    "videos": {
+      "results": [
+        {
+          "iso_639_1": "pt",
+          "iso_3166_1": "BR",
+          "name": "Comercial: Super Mario Bros. Encanadores",
+          "key": "7ZTLlerWlaE",
+          "site": "YouTube",
+          "size": 1080,
+          "type": "Clip",
+          "official": true,
+          "published_at": "2023-03-10T19:12:15.000Z",
+          "id": "641365aea6c10400d8d8df28"
+        },
+        {
+          "iso_639_1": "pt",
+          "iso_3166_1": "BR",
+          "name": "Trailer Final Dublado",
+          "key": "iL6-Q62CjbA",
+          "site": "YouTube",
+          "size": 1080,
+          "type": "Trailer",
+          "official": true,
+          "published_at": "2023-03-09T22:10:00.000Z",
+          "id": "640a6865c92c5d00a188b645"
+        },
+        {
+          "iso_639_1": "pt",
+          "iso_3166_1": "BR",
+          "name": "Trailer Oficial Dublado",
+          "key": "Cb4WV4aXBpk",
+          "site": "YouTube",
+          "size": 1080,
+          "type": "Trailer",
+          "official": true,
+          "published_at": "2022-11-29T22:07:57.000Z",
+          "id": "638780d78ee49c0079a607a5"
+        },
+        {
+          "iso_639_1": "pt",
+          "iso_3166_1": "BR",
+          "name": "Teaser Trailer Dublado",
+          "key": "wkn-Gb-Fhac",
+          "site": "YouTube",
+          "size": 1080,
+          "type": "Trailer",
+          "official": true,
+          "published_at": "2022-10-06T20:50:20.000Z",
+          "id": "633f51bc501cf2008367d4a9"
+        }
+      ]
+    },
+    "images": {
+      "backdrops": [],
+      "logos": [],
+      "posters": []
+    },
+    "reviews": {
+      "page": 1,
+      "results": [
+        {
+          "author": "Priscila Oliveira",
+          "author_details": {
+            "name": "Priscila Oliveira",
+            "username": "Bizudapri",
+            "avatar_path": "/cLaTEKNPLiChgKrciD9ewgoI7u2.jpg",
+            "rating": 10
+          },
+          "content": "**Super Mario: O Filme** é impecável!\r\n O visual belíssimo dos cenários, a escolha dos ângulos de câmera fazem parecer que estamos diante de um jogo. Sim, não tem novidade no roteiro que acaba sendo clichê, mas , a forma que é apresentado é genial. É como se cada plano sequencia fosse uma fase do jogo.\r\n Os gráficos são impressionantes e fazem jus a todo universo da franquia. O filme trás muitas referencias, desde as músicas clássicas até os games ao longo desses anos. \r\nMesmo quem não conhece nada dos videogames vai curtir a trama e se divertir e claro se apaixonar com esse universo lindo!",
+          "created_at": "2023-04-09T18:10:00.096Z",
+          "id": "6432ff7831032501036f6fef",
+          "updated_at": "2023-04-09T18:10:00.164Z",
+          "url": "https://www.themoviedb.org/review/6432ff7831032501036f6fef"
+        },
+        {
+          "author": "VCR",
+          "author_details": {
+            "name": "VCR",
+            "username": "Tooshi",
+            "avatar_path": "/f7CT9eCM1LEAzQMgalZCoCIrQUR.png",
+            "rating": 7
+          },
+          "content": "Entrega o que promete um fan-service para os fãs antigos e uma boa apresentação para o publico mais novo.",
+          "created_at": "2023-07-10T20:32:04.019Z",
+          "id": "64ac6ac36a344800ea8d91b1",
+          "updated_at": "2023-07-14T15:10:05.293Z",
+          "url": "https://www.themoviedb.org/review/64ac6ac36a344800ea8d91b1"
+        }
+      ],
+      "total_pages": 1,
+      "total_results": 2
+    },
+    "recommendations": {
+      "page": 1,
+      "results": [
+        {
+          "adult": false,
+          "backdrop_path": "/7bWxAsNPv9CXHOhZbJVlj2KxgfP.jpg",
+          "id": 713704,
+          "title": "A Morte do Demônio: A Ascensão",
+          "original_language": "en",
+          "original_title": "Evil Dead Rise",
+          "overview": "Duas irmãs distantes cujo reencontro é interrompido por demônios devoradores de carne que aparecem de repente, levando-as a uma batalha primal pela sobrevivência, enfrentando a versão mais assustadora que se possa imaginar de uma família.",
+          "poster_path": "/5E4nVa3dXTHG2zx9iO7b0UIMsa7.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            53,
+            27
+          ],
+          "popularity": 319.834,
+          "release_date": "2023-04-12",
+          "video": false,
+          "vote_average": 7.031,
+          "vote_count": 2046
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/4XM8DUTQb3lhLemJC51Jx4a2EuA.jpg",
+          "id": 385687,
+          "title": "Velozes & Furiosos 10",
+          "original_language": "en",
+          "original_title": "Fast X",
+          "overview": "O fim da estrada está chegando. Velozes & Furiosos 10, é o décimo filme da franquia Velozes & Furiosos, lança os capítulos finais de uma grande saga, uma das mais famosas e populares do cinema, agora com sua terceira década e ainda mais forte. Com o mesmo elenco e personagens principais de quando começou. Ao longo de muitas missões e lutando contra todos os obstáculos impossíveis, Dom Toretto (Vin Diesel) e sua família foram mais espertos, mais furiosos e mais rápidos do que todos os inimigos em seu caminho. Agora, eles enfrentam o seu oponente mais letal: uma ameaça terrível das sombras do passado, alimentada por sede de vingança e determinada a destruir esta família.",
+          "poster_path": "/wDWAA5QApz5L5BKfFaaj8HJCAQM.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            28,
+            80,
+            53
+          ],
+          "popularity": 1423.801,
+          "release_date": "2023-05-17",
+          "video": false,
+          "vote_average": 7.324,
+          "vote_count": 3084
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/m8JTwHFwX7I7JY5fPe4SjqejWag.jpg",
+          "id": 640146,
+          "title": "Homem-Formiga e a Vespa: Quantumania",
+          "original_language": "en",
+          "original_title": "Ant-Man and the Wasp: Quantumania",
+          "overview": "Scott Lang e Hope van Dyne em suas jornadas como super-heróis. Scott e sua família são puxados para o Reino Quântico, onde eles precisarão enfrentar um novo e terrível vilão: Kang, o Conquistador e M.O.D.O.K..",
+          "poster_path": "/pDNT1gXhZEV1V70eCVmJAQNEqBl.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            28,
+            12,
+            878
+          ],
+          "popularity": 347.081,
+          "release_date": "2023-02-15",
+          "video": false,
+          "vote_average": 6.47,
+          "vote_count": 3698
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/fgw4rFs4XMWdJTWp1eMacHKQqbZ.jpg",
+          "id": 603692,
+          "title": "John Wick 4: Baba Yaga",
+          "original_language": "en",
+          "original_title": "John Wick: Chapter 4",
+          "overview": "Com o preço por sua cabeça cada vez maior, John Wick leva sua luta contra a alta mesa global enquanto procura os jogadores mais poderosos do submundo, de Nova York a Paris, de Osaka a Berlim.",
+          "poster_path": "/rXTqhpkpj6E0YilQ49PK1SSqLhm.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            28,
+            53,
+            80
+          ],
+          "popularity": 816.374,
+          "release_date": "2023-03-22",
+          "video": false,
+          "vote_average": 7.833,
+          "vote_count": 4036
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/hiHGRbyTcbZoLsYYkO4QiCLYe34.jpg",
+          "id": 758323,
+          "title": "O Exorcista do Papa",
+          "original_language": "en",
+          "original_title": "The Pope's Exorcist",
+          "overview": "O padre Gabriele Amorth, exorcista do Vaticano, luta contra Satanás e demônios possuidores de inocentes. Um retrato detalhado de um padre que realizou mais de 100 mil exorcismos em sua vida.",
+          "poster_path": "/ba7ks0ZaIkRLp5Zqx6KkQ3unxRr.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            27,
+            53
+          ],
+          "popularity": 319.963,
+          "release_date": "2023-04-05",
+          "video": false,
+          "vote_average": 7.183,
+          "vote_count": 1697
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/fpaVxLcSQnnMdtcCRdZV0eTjJPg.jpg",
+          "id": 60898,
+          "title": "Uma História Erótica de Fantasmas",
+          "original_language": "cn",
+          "original_title": "聊齋艷譚",
+          "overview": "Three vixens have meditated for 1,000 years to able to shed their animal natures and become human. For the final month of their rigors, they have moved near a village where women pray to a god of fertility. One sister visits the god's temple and thinks lustful thoughts. As she leaves, a priest confronts her, warning of dire consequences and of demons that will try to stop the vixens' transformation. Soon, the youngest sister saves a poor scholar from bandits and becomes enamored of him. Each sister visits him, and before long, the youth has made love to all three. After they invite him to stay with them, the playfulness takes a scary turn. Where can they turn for help?",
+          "poster_path": "/fTUCwsxVoLFuodAtlL6aITP1B45.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            14,
+            18,
+            27
+          ],
+          "popularity": 74.245,
+          "release_date": "1990-05-19",
+          "video": false,
+          "vote_average": 6.1,
+          "vote_count": 40
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/54IXMMEQKlkPXHqPExWy98UBmtE.jpg",
+          "id": 1008005,
+          "title": "A Primeira Comunhão",
+          "original_language": "es",
+          "original_title": "La niña de la comunión",
+          "overview": "Espanha, final dos anos 1980. A recém-chegada Sara tenta se encaixar com os outros adolescentes nesta pequena cidade unida na província de Tarrgona. Se ao menos ela fosse mais parecida com seu melhor amigo extrovertido, Rebe. Eles saem uma noite em uma boate, a caminho de casa, eles se deparam com uma menina segurando uma boneca, vestida para sua primeira comunhão. E é aí que o pesadelo começa.",
+          "poster_path": "/AdI2MkMriHeay5AKUytfnW8oGct.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            27
+          ],
+          "popularity": 92.14,
+          "release_date": "2023-02-10",
+          "video": false,
+          "vote_average": 6.188,
+          "vote_count": 144
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/AdBXP8e6K3FYdDrMx3Wr6WZqCYF.jpg",
+          "id": 493529,
+          "title": "Dungeons & Dragons: Honra Entre Rebeldes",
+          "original_language": "en",
+          "original_title": "Dungeons & Dragons: Honor Among Thieves",
+          "overview": "Em um mundo repleto de dragões, elfos, anões, orcs e outras criaturas fantásticas, sobreviver é sempre um grande desafio. Raven Hightower é um humano que se arrisca entre os lugares mais perigosos e misteriosos desse universo, sempre com a ajuda de outros aventureiros que, assim como ele, estão dispostos a combater o mal e a derrotar as mais terríveis criaturas que surgem em seus caminhos.",
+          "poster_path": "/itUFRyAMZNqSKL5zsPPVLdggGek.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            12,
+            14,
+            35
+          ],
+          "popularity": 168.583,
+          "release_date": "2023-03-23",
+          "video": false,
+          "vote_average": 7.4,
+          "vote_count": 2022
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/8QsVX5C82mT7bB5sVsjsLcerWQK.jpg",
+          "id": 677179,
+          "title": "Creed III",
+          "original_language": "en",
+          "original_title": "Creed III",
+          "overview": "Depois de dominar o mundo do boxe, Adonis Creed tem prosperado em sua carreira e vida familiar. Quando um amigo de infância e ex-prodígio do boxe, Damien Anderson, ressurge depois de cumprir uma longa sentença na prisão, ele está ansioso para provar que merece sua chance no ringue. O confronto entre ex-amigos é mais do que apenas uma briga. Para acertar as contas, Adonis deve colocar seu futuro em risco para lutar contra Damien - um lutador que não tem nada a perder.",
+          "poster_path": "/wDugyjvDQsuwm9j9hkmK4whCOti.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            18,
+            28
+          ],
+          "popularity": 273.365,
+          "release_date": "2023-03-01",
+          "video": false,
+          "vote_average": 7.202,
+          "vote_count": 1843
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/zRQITMLvVi8z2Xz12Bi6wvbZE82.jpg",
+          "id": 594767,
+          "title": "Shazam! Fúria dos Deuses",
+          "original_language": "en",
+          "original_title": "Shazam! Fury of the Gods",
+          "overview": "Continua a história do adolescente Billy Batson que, ao recitar a palavra mágica “SHAZAM!”, é transformado em seu alto ego adulto de super-herói, Shazam.",
+          "poster_path": "/1qDivmsYL79dQZngyT3oKd4L9tA.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            35,
+            28,
+            14
+          ],
+          "popularity": 298.324,
+          "release_date": "2023-03-15",
+          "video": false,
+          "vote_average": 6.685,
+          "vote_count": 2214
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/8rpDcsfLJypbO6vREc0547VKqEv.jpg",
+          "id": 76600,
+          "title": "Avatar: O Caminho da Água",
+          "original_language": "en",
+          "original_title": "Avatar: The Way of Water",
+          "overview": "12 anos depois de explorar Pandora e se juntar aos Na'vi, Jake Sully formou uma família com Neytiri e se estabeleceu entre os clãs do novo mundo. Porém, a paz não durará para sempre.",
+          "poster_path": "/mbYQLLluS651W89jO7MOZcLSCUw.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            878,
+            12,
+            28
+          ],
+          "popularity": 511.246,
+          "release_date": "2022-12-14",
+          "video": false,
+          "vote_average": 7.667,
+          "vote_count": 9348
+        },
+        {
+          "adult": false,
+          "backdrop_path": null,
+          "id": 385647,
+          "title": "Umbrella",
+          "original_language": "ka",
+          "original_title": "ქოლგა",
+          "overview": "A railway controller and his sweetheart live in peace next to the railway tracks. Out of nowhere, an umbrella flies into their life.",
+          "poster_path": "/1wNMeSpd1Jg588KJsjTeYGOvkWY.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            35,
+            14,
+            18,
+            10749
+          ],
+          "popularity": 1.123,
+          "release_date": "1966-12-11",
+          "video": false,
+          "vote_average": 6.7,
+          "vote_count": 8
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/n5NSF8wZeWQHHZtuWgbRAVpqXFR.jpg",
+          "id": 552688,
+          "title": "A Mãe",
+          "original_language": "en",
+          "original_title": "The Mother",
+          "overview": "Perseguida por inimigos perigosos, uma assassina foragida sai do esconderijo para proteger a filha que abandonou anos atrás.",
+          "poster_path": "/5OeWHBMifiRPMz6eS23miS5ttED.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            28,
+            53
+          ],
+          "popularity": 175.875,
+          "release_date": "2023-05-04",
+          "video": false,
+          "vote_average": 6.769,
+          "vote_count": 913
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/jZXvRmQTAFmNaHSyN8DQqS5IIaM.jpg",
+          "id": 860867,
+          "title": "A Maldição",
+          "original_language": "en",
+          "original_title": "The Accursed",
+          "overview": "Inspirado no folclore do Leste Europeu, uma traição impensável leva a uma maldição maléfica colocada sobre a linhagem de uma família. Décadas depois, um casamento une a próxima geração de famílias distantes. Quando um deles desperta inconscientemente uma força negra que começa a eliminá-los um por um, Hana, a matriarca da linhagem de hoje, deve descobrir quem está trabalhando contra eles antes que a maldição sangrenta tome conta deles para sempre.",
+          "poster_path": "/plS7R81TAtIJxCIW7PIze5vmy5A.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            27
+          ],
+          "popularity": 7.189,
+          "release_date": "2021-11-12",
+          "video": false,
+          "vote_average": 5.9,
+          "vote_count": 23
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/5YZbUmjbMa3ClvSW1Wj3D6XGolb.jpg",
+          "id": 447365,
+          "title": "Guardiões da Galáxia: Vol. 3",
+          "original_language": "en",
+          "original_title": "Guardians of the Galaxy Vol. 3",
+          "overview": "Peter Quill, que ainda está a recuperar da perda de Gamora, tem que reunir a sua equipa para defender o universo e proteger um dos seus. Uma missão que, se não for concluída com sucesso, pode levar ao fim dos Guardiões como os conhecemos.",
+          "poster_path": "/4yycSPnchdNAZirGkmCYQwTd3cr.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            878,
+            12,
+            28
+          ],
+          "popularity": 1766.254,
+          "release_date": "2023-05-03",
+          "video": false,
+          "vote_average": 8.094,
+          "vote_count": 3752
+        },
+        {
+          "adult": false,
+          "backdrop_path": null,
+          "id": 1106739,
+          "title": "Juror No. 2",
+          "original_language": "en",
+          "original_title": "Juror No. 2",
+          "overview": "A juror in a murder trial realizes he may have caused the victim's death and must wrestle with the dilemma of whether to manipulate the jury to save himself or reveal the truth and turn himself in.",
+          "poster_path": null,
+          "media_type": "movie",
+          "genre_ids": [
+            18,
+            53
+          ],
+          "popularity": 1.144,
+          "release_date": "",
+          "video": false,
+          "vote_average": 0,
+          "vote_count": 0
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/9g3D6DWrsqhG8K55JPS44PpSTHO.jpg",
+          "id": 325358,
+          "title": "Super Velozes, Mega Furiosos",
+          "original_language": "en",
+          "original_title": "Superfast!",
+          "overview": "Policial disfarçado Lucas Branco junta gangue LA de Vin Serento de corredores de rua ilegais. Eles são rápidos e eles estão furiosos e eles planejam dobrar cruz chefão do crime LA Juan Carlos de la Sol, que esconde o seu dinheiro em um centro de Taco Bell. O gangues plano escandaloso é tão ousado como é ridículo e vai vê-los rebocar todo o restaurante maldita, a velocidades loucas.",
+          "poster_path": "/iuIWl90qCpoxv6g775JB6Kg0m86.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            35,
+            28
+          ],
+          "popularity": 83.267,
+          "release_date": "2015-03-05",
+          "video": false,
+          "vote_average": 5.008,
+          "vote_count": 363
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/vOQjANTdUkb2ysjFTGKVIGryG9w.jpg",
+          "id": 19603,
+          "title": "Ciao",
+          "original_language": "en",
+          "original_title": "Ciao",
+          "overview": "A man learns that his late friend had a secret online lover who is on the way from Italy.",
+          "poster_path": "/fvgR62s7bJizAS8xnGZCHmZrPbw.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            18,
+            10749
+          ],
+          "popularity": 4.221,
+          "release_date": "2008-12-05",
+          "video": false,
+          "vote_average": 6,
+          "vote_count": 32
+        },
+        {
+          "adult": false,
+          "backdrop_path": null,
+          "id": 1128006,
+          "title": "The Milk's Gone Bad",
+          "original_language": "en",
+          "original_title": "The Milk's Gone Bad",
+          "overview": "After throwing out a carton of spoiled milk, Salvador gets hunted down and psychologically challenged as it takes everything he loves away.",
+          "poster_path": "/3DR1QWyBHgKfQSfaqkfLULNU4Mw.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            35,
+            27
+          ],
+          "popularity": 0.84,
+          "release_date": "2022-12-30",
+          "video": false,
+          "vote_average": 7,
+          "vote_count": 1
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/4HodYYKEIsGOdinkGi2Ucz6X9i0.jpg",
+          "id": 569094,
+          "title": "Homem-Aranha: Através do Aranhaverso",
+          "original_language": "en",
+          "original_title": "Spider-Man: Across the Spider-Verse",
+          "overview": "Miles Morales retorna para o próximo capítulo da saga do Aranhaverso, uma aventura épica que transportará o Homem-Aranha em tempo integral e amigável do bairro do Brooklyn através do Multiverso para unir forças com Gwen Stacy e uma nova equipe de Homens-Aranha para enfrentar com um vilão mais poderoso do que qualquer coisa que eles já encontraram.",
+          "poster_path": "/xxPXsL8V95dTwL5vHWIIQALkJQS.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            28,
+            12,
+            16,
+            878
+          ],
+          "popularity": 849.228,
+          "release_date": "2023-05-31",
+          "video": false,
+          "vote_average": 8.455,
+          "vote_count": 2626
+        },
+
+        {
+          "adult": false,
+          "backdrop_path": "/b9UCfDzwiWw7mIFsIQR9ZJUeh7q.jpg",
+          "id": 868759,
+          "title": "Ghosted: Sem Resposta",
+          "original_language": "en",
+          "original_title": "Ghosted",
+          "overview": "O corretíssimo Cole se apaixona pela enigmática Sadie, mas logo enfrenta a chocante descoberta de que ela é uma agente secreta. Antes que eles possam decidir se terão ou não um segundo encontro, Cole e Sadie são arrastados para uma aventura internacional para salvar o mundo.",
+          "poster_path": "/89p7MQ3I5wKzOEO0OCCXEdUqX9R.jpg",
+          "media_type": "movie",
+          "genre_ids": [
+            28,
+            35,
+            10749
+          ],
+          "popularity": 228.903,
+          "release_date": "2023-04-18",
+          "video": false,
+          "vote_average": 7.088,
+          "vote_count": 1154
+        }
+      ],
+      "total_pages": 2,
+      "total_results": 40
+    },
+    "similar": {
+      "page": 1,
+      "results": [
+        {
+          "adult": false,
+          "backdrop_path": null,
+          "genre_ids": [
+            14,
+            27
+          ],
+          "id": 4231,
+          "original_language": "en",
+          "original_title": "The Erotic Ghost",
+          "overview": "",
+          "popularity": 2.516,
+          "poster_path": "/tFR2RhRB3pLIoWOsHQy80zy3IVJ.jpg",
+          "release_date": "2001-01-01",
+          "title": "The Erotic Ghost",
+          "video": false,
+          "vote_average": 4,
+          "vote_count": 5
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/kttkW0qMv4quwRH5a59gQMFrpl2.jpg",
+          "genre_ids": [
+            35
+          ],
+          "id": 4258,
+          "original_language": "en",
+          "original_title": "Scary Movie 5",
+          "overview": "O novo filme da franquia mais politicamente incorreta do cinema inclui paródias dos filmes \"Atividade Paranormal\", \"Mama\", \"A Entidade\", \"A Morte do Demônio\", \"A Origem\", \"Cisne Negro\" e outras referências da cultura pop.",
+          "popularity": 60.016,
+          "poster_path": "/14mLzrL5d9ykeEy0L9RGSit6PXN.jpg",
+          "release_date": "2013-04-11",
+          "title": "Todo Mundo em Pânico 5",
+          "video": false,
+          "vote_average": 4.806,
+          "vote_count": 2576
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/zEGaLO97eh5fKbNa7v4ksJBsuuO.jpg",
+          "genre_ids": [
+            10402
+          ],
+          "id": 799693,
+          "original_language": "en",
+          "original_title": "An Audience with Elton John",
+          "overview": "",
+          "popularity": 0.982,
+          "poster_path": "/i2dvUDslNnwfDxaPQrK6WHQFrOt.jpg",
+          "release_date": "1997-09-27",
+          "title": "An Audience with Elton John",
+          "video": false,
+          "vote_average": 0,
+          "vote_count": 0
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/i4NvcHeYeAdLEFiLxEVvUA3BT0.jpg",
+          "genre_ids": [
+            12,
+            16,
+            35,
+            10751
+          ],
+          "id": 8916,
+          "original_language": "en",
+          "original_title": "Antz",
+          "overview": "A formiguinha Z apenas um operário, que sonha roubar o coração da princesa Bala. Para isso, convence seu amigo soldado a trocar de lugar com ele, o que faz com que tenha que enfrentar o impiedoso General Mandíbula, que planeja uma grande ofensiva contra o formigueiro.",
+          "popularity": 32.581,
+          "poster_path": "/plM5vyLRiiVrVlLC7bQPVmjSwN2.jpg",
+          "release_date": "1998-10-02",
+          "title": "FormiguinhaZ",
+          "video": false,
+          "vote_average": 6.141,
+          "vote_count": 4078
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/imYymwc08RsEx3ZmWepkGzaE2Rw.jpg",
+          "genre_ids": [
+            27,
+            53
+          ],
+          "id": 8922,
+          "original_language": "en",
+          "original_title": "Jeepers Creepers",
+          "overview": "Ao voltarem para casa por uma estrada sem movimento, os irmãos Trish e Darry veem um vulto atirando o que parece ser um corpo embrulhado. Parando para investigar, eles descobrem centenas de corpos mutilados, pendurados embaixo de uma antiga igreja.",
+          "popularity": 45.138,
+          "poster_path": "/4deKiUXWqyATIEKCBSjRxCOLvu0.jpg",
+          "release_date": "2001-07-01",
+          "title": "Olhos Famintos",
+          "video": false,
+          "vote_average": 6.442,
+          "vote_count": 2653
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/7U2k9pj6ljsHDCKrliqVtpemfCb.jpg",
+          "genre_ids": [
+            35
+          ],
+          "id": 8951,
+          "original_language": "it",
+          "original_title": "Non pensarci",
+          "overview": "",
+          "popularity": 2.232,
+          "poster_path": "/rMhqzVogQLvTAjlzmj8KGSNub4w.jpg",
+          "release_date": "2007-09-01",
+          "title": "Non pensarci",
+          "video": false,
+          "vote_average": 6.9,
+          "vote_count": 37
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/xh0ZRdnL4pSqfW73HBf97xiNEFP.jpg",
+          "genre_ids": [
+            14,
+            28
+          ],
+          "id": 8960,
+          "original_language": "en",
+          "original_title": "Hancock",
+          "overview": "Hancock, um super-herói desajeitado, protege os cidadãos de Los Angeles mas causa danos colaterais a cada ato heroico que realiza. Hancock não se importa com o que as pessoas pensam. Entretanto, após salvar a vida de um executivo, ele conhece a bela esposa dele e descobre que, apesar de tudo, é um homem sensível.",
+          "popularity": 41.858,
+          "poster_path": "/anUAnDorLJe0J2o9b0Wh3FTxJ7r.jpg",
+          "release_date": "2008-07-01",
+          "title": "Hancock",
+          "video": false,
+          "vote_average": 6.344,
+          "vote_count": 8847
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/mfFhgR9ILPWbYtvbdyAGUo6fbpT.jpg",
+          "genre_ids": [
+            14,
+            18,
+            10749
+          ],
+          "id": 8966,
+          "original_language": "en",
+          "original_title": "Twilight",
+          "overview": "Isabella Swan é uma adolescente que vai morar com seu pai em uma nova cidade depois que sua mãe decide casar-se novamente. No colégio, ela fica fascinada por Edward Cullen, um garoto que esconde um segredo obscuro. Eles se apaixonam, mas Edward sabe que quanto mais avançam no relacionamento, mais ele está colocando Bella e aqueles à sua volta em perigo.",
+          "popularity": 95.284,
+          "poster_path": "/e33qJrkBGQHWc93FgIuyYWnmeBQ.jpg",
+          "release_date": "2008-11-20",
+          "title": "Crepúsculo",
+          "video": false,
+          "vote_average": 6.292,
+          "vote_count": 12517
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/krDjqWqLAewVYiU8fDQLHO7gPmf.jpg",
+          "genre_ids": [
+            18,
+            14
+          ],
+          "id": 8967,
+          "original_language": "en",
+          "original_title": "The Tree of Life",
+          "overview": "Conta a história que aproxima o foco na relação entre pai e filho de uma família comum, e expande a ótica desta rica relação, ao longo dos séculos, desde o Big Bang até o fim dos tempos, em uma fabulosa viagem pela história da vida e seus mistérios, que culmina na busca pelo amor altruísta e o perdão.",
+          "popularity": 15.628,
+          "poster_path": "/iDt5nvv2TdZsFFuF5JvnEZr6RGB.jpg",
+          "release_date": "2011-05-17",
+          "title": "A Árvore da Vida",
+          "video": false,
+          "vote_average": 6.73,
+          "vote_count": 2813
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/mVuH9hNGnxF9bbhlh1Tr9FuG3Uc.jpg",
+          "genre_ids": [
+            12,
+            16,
+            10751,
+            14,
+            878
+          ],
+          "id": 9016,
+          "original_language": "en",
+          "original_title": "Treasure Planet",
+          "overview": "Versão animada da Disney de “Ilha do Tesouro”, mas passando-se no espaço. Jim Hawkins é um adolescente rebelde sem muita perspectiva de futuro, até receber um mapa que o fará percorrer o espaço em sua nave com uma tripulação de personagens característicos da empresa. Afundou na bilheteria e foi um dos responsáveis pela decisão de Disney de não lançar mais filmes de animação convencional.",
+          "popularity": 38.686,
+          "poster_path": "/4GJnKM1CLylmp8phkyiITiwu7L.jpg",
+          "release_date": "2002-11-26",
+          "title": "Planeta do Tesouro",
+          "video": false,
+          "vote_average": 7.526,
+          "vote_count": 3750
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/b8hPBW0NJmiIVzvQjT3CwIpAdzl.jpg",
+          "genre_ids": [
+            37,
+            16,
+            12,
+            35,
+            10751,
+            18
+          ],
+          "id": 9023,
+          "original_language": "en",
+          "original_title": "Spirit: Stallion of the Cimarron",
+          "overview": "No final do século XVII em pleno Oeste norte-americano vive Spirit, um cavalo que resiste a ser domado pelo homem. Ele se apaixona por uma égua local, chamada Chuva, e desenvolve uma grande amizade com um jovem índio Lakota chamado Pequeno Rio. Juntos eles acompanham a colonização do local onde vivem, percebendo as mudanças que a chegada da civilização fazem em seu dia-a-dia.",
+          "popularity": 74.789,
+          "poster_path": "/qJ8fF5Uoy9WLrUvCXU26VJrfa5r.jpg",
+          "release_date": "2002-05-24",
+          "title": "Spirit: O Corcel Indomável",
+          "video": false,
+          "vote_average": 7.696,
+          "vote_count": 4185
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/iJxccKHCe1vTXtCoFezYCWDk8On.jpg",
+          "genre_ids": [
+            35,
+            10749
+          ],
+          "id": 9029,
+          "original_language": "en",
+          "original_title": "What Happens in Vegas",
+          "overview": "Depois da noite mais insana de suas vidas em Las Vegas, dois estranhos sem nada em comum, Jack e Joy, acordam e descobrem que não apenas se divertiram, eles também estão casados! Mas a anulação não vai ser algo tão fácil, pois Jack ganha um prêmio de US$ 3 milhões de dólares apostando com uma moeda de Joy, e um juiz irritado sentencia o casal a seis meses de \"casamento para valer\" antes  de dividir o dinheiro.",
+          "popularity": 25.717,
+          "poster_path": "/js0sBACrLX6QMBImDFTG1fYAU7k.jpg",
+          "release_date": "2008-05-07",
+          "title": "Jogo de Amor em Las Vegas",
+          "video": false,
+          "vote_average": 6.085,
+          "vote_count": 2790
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/kUpD6EnpnQBi3mjYxmiM4xvuh8g.jpg",
+          "genre_ids": [
+            27,
+            878,
+            35
+          ],
+          "id": 9035,
+          "original_language": "en",
+          "original_title": "Slither",
+          "overview": "Grant Grant (Michael Rooker) é um dos poucos bem-sucedidos homens de negócios da pequena cidade de Wheelsy. Ele é casado e completamente apaixonado por Starla (Elizabeth Banks), apesar dela não sentir a mesma afeição por ele. Apesar disto, Grant leva uma vida feliz. Entretanto sua vida muda por completo após conhecer Brenda Gutierrez (Brenda James), a irmã caçula de uma antiga namorada. Ao dar uma volta sob o luar eles encontram algo gosmento no meio do mato, que parece ter vindo de destroços de um meteoro. Subitamente esta massa ganha vida e penetra no corpo de Grant, tornando-o seu hospedeiro. Aos poucos o ser alienígena toma conta das ações de Grant, tornando-o uma criatura sedenta de sangue e com a necessidade de infectar outros humanos.",
+          "popularity": 22.196,
+          "poster_path": "/jxvAwwxEdOLejezzD1hHWVhHbdq.jpg",
+          "release_date": "2006-03-31",
+          "title": "Seres Rastejantes",
+          "video": false,
+          "vote_average": 6.49,
+          "vote_count": 1326
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/6KDpjoCxlNapSzqUdagloiQqljh.jpg",
+          "genre_ids": [
+            99,
+            10752
+          ],
+          "id": 263614,
+          "original_language": "en",
+          "original_title": "Virunga",
+          "overview": "Conheça a história verídica dos guardas que arriscam a vida para proteger o parque nacional mais precioso da África e seus gorilas em risco de extinção.",
+          "popularity": 13.244,
+          "poster_path": "/b59YdJZyRUu04hnWdmmz4kPjbTF.jpg",
+          "release_date": "2014-11-07",
+          "title": "VIRUNGA",
+          "video": false,
+          "vote_average": 7.949,
+          "vote_count": 198
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/bJIAvpPOUV3NCU9TXBytTo3HaSd.jpg",
+          "genre_ids": [
+            35,
+            80,
+            53
+          ],
+          "id": 5516,
+          "original_language": "en",
+          "original_title": "The Ladykillers",
+          "overview": "O professor G.H. Dorr tem um grande plano para assaltar um cassino. Ele aluga um quarto na casa de uma senhora, onde convoca seus comparsas para discutir o plano de ação. A situação se complica quando a senhora descobre o plano, o que faz com que os ladrões tenham que eliminá-la de qualquer maneira.",
+          "popularity": 13.292,
+          "poster_path": "/xT3o0tIpUjNsOhhsBUDINUl2wN.jpg",
+          "release_date": "2004-03-25",
+          "title": "Matadores de Velhinha",
+          "video": false,
+          "vote_average": 6.122,
+          "vote_count": 1437
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/lVfqLDmfrxIXFU2TcWTsG3ePdER.jpg",
+          "genre_ids": [
+            10751,
+            16,
+            12,
+            35
+          ],
+          "id": 5559,
+          "original_language": "en",
+          "original_title": "Bee Movie",
+          "overview": "O ambicioso jovem Barry B. Benson cai no mundo com os respeitados Ases do Pólen em busca de néctar e aventura. Mas quando quebra uma das regras fundamentais do mundo das abelhas e fala com humanos, Barry provoca uma incrível série de fatos, que provam que até uma pequena abelha pode fazer a grande diferença!",
+          "popularity": 43.728,
+          "poster_path": "/dC0f3uld9Ea51QzlLleSFxWy2Hw.jpg",
+          "release_date": "2007-10-28",
+          "title": "Bee Movie: A História de uma Abelha",
+          "video": false,
+          "vote_average": 6.013,
+          "vote_count": 4432
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/zZEJu3db4Ld4urK5klPvQxkWzaX.jpg",
+          "genre_ids": [
+            12,
+            14,
+            18,
+            35,
+            10402
+          ],
+          "id": 6116,
+          "original_language": "en",
+          "original_title": "Spice World",
+          "overview": "Os acontecimentos, diretos ou indiretos, que estão ligados ao show que as Spice Girls farão no Albert Hall, em Londres, e que terá transmissão ao vivo para muitos países. Kevin McMaxford (Barry Humphries), o editor de um jornal, tenta armar um plano para o show ser cancelado e as Spice Girls brigarem, pois estas notícias o farão vender muitas edições e, consequentemente, o deixarão muito mais rico.",
+          "popularity": 9.448,
+          "poster_path": "/vKiAnV1QAGIJP38vatwCZp4dCrH.jpg",
+          "release_date": "1997-12-18",
+          "title": "Spice World – O Mundo das Spice Girls",
+          "video": false,
+          "vote_average": 4.763,
+          "vote_count": 418
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/6MIcir1IlXCCLGfyg1VZwwYeUpG.jpg",
+          "genre_ids": [
+            878,
+            53,
+            28,
+            18
+          ],
+          "id": 8765,
+          "original_language": "it",
+          "original_title": "Nirvana",
+          "overview": "",
+          "popularity": 10.935,
+          "poster_path": "/mL3IdIVQuDaXilgwMJjKbERYLFX.jpg",
+          "release_date": "1997-01-24",
+          "title": "Nirvana",
+          "video": false,
+          "vote_average": 6.532,
+          "vote_count": 247
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/ndF6ZhUodLMk7GarzEUlxIbpwlr.jpg",
+          "genre_ids": [
+            35
+          ],
+          "id": 8767,
+          "original_language": "fr",
+          "original_title": "L'Animal",
+          "overview": "",
+          "popularity": 5.827,
+          "poster_path": "/5CELdSVvSMaXk7NX2v5EsMEL2dV.jpg",
+          "release_date": "1977-10-05",
+          "title": "O Animal",
+          "video": false,
+          "vote_average": 6.423,
+          "vote_count": 78
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/3ZDTjZ8bUwA8p9aDydBC8nkf3MO.jpg",
+          "genre_ids": [
+            27
+          ],
+          "id": 8769,
+          "original_language": "en",
+          "original_title": "Christine",
+          "overview": "Arnie Cunningham compra um Plymouth Fury 1958, que ele chama de Christine. Ele então desenvolve uma obsessão doentia pelo carro, para o desespero de seu amigo atleta, Dennis Guilder. Depois do valentão Buddy Repperton desfigurar Christine, o carro se restaura perfeitamente e começa a matar Buddy e seus amigos. Determinado a acabar com as mortes, Dennis e a namorada de Arnie, Leigh Cabot, decidem destruir Christine.",
+          "popularity": 24.867,
+          "poster_path": "/lQgflKBffMBXkOsM0PpLl2nWFyn.jpg",
+          "release_date": "1983-05-11",
+          "title": "Christine: O Carro Assassino",
+          "video": false,
+          "vote_average": 6.847,
+          "vote_count": 1722
+        }
+
+        
+
+      ],
+      "total_pages": 128,
+      "total_results": 2557
+    },
+
+    "seasons": [
+      {
+        "air_date": "2023-01-15",
+        "episode_count": 9,
+        "id": 144593,
+        "name": "Season 1",
+        "overview": "Joel and Ellie, a pair connected through the harshness of the world they live in, are forced to endure brutal circumstances and ruthless killers on a trek across a post-outbreak America.",
+        "poster_path": "/pMfG5XIlmvCL9bQQiJKdTvmF2FW.jpg",
+        "season_number": 1,
+        "vote_average": 7.8
+      }
+    ]
+
+  }

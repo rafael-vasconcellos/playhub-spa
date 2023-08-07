@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './style.css'
 import { API_KEY } from '../../config'
-import { filmes, series } from '../../genres.tsx'
+import { filmes, series } from '../../genres.ts'
 import Item from '../Item/index.tsx'
 import Profile from '../Profile/index.tsx'
 
@@ -13,7 +13,7 @@ export default function Search() {
     async function fetchData(url: string, type: string) {
         return fetch(url, {headers: {"Authorization": API_KEY} } ).then(response => response.json())
         .then(res => { 
-            if ( res.results?.length ?? 0 > 0 ) {
+            if ( (res.results?.length ?? 0) > 0 ) {
                 res.results.forEach( (indice:any) => {indice.type = type} )
                 setContents( 
                     (prevState) => [...prevState, ...res.results].sort( () => Math.round(Math.random()) )

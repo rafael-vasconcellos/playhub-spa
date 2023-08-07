@@ -8,7 +8,7 @@ const Profile: React.FC<profileProps> = function( {href} ) {
     const menuItems = 'px-3 py-1 hover:bg-zinc-500 cursor-pointer'
 
       return (
-        <>
+        <section>
           <div className='inline-flex items-center gap-3 absolute top-2 right-2 z-10'>
 
               <div className={`h-12 w-12 rounded-full bg-zinc-600 inline-block bg-contain`} style={{backgroundImage: `url('${href}')`}}></div>
@@ -36,7 +36,7 @@ const Profile: React.FC<profileProps> = function( {href} ) {
               </ul>
 
           </div>
-        </>
+        </section>
       )
 }
 

@@ -13,7 +13,7 @@ export default function Banner() {
 
     } )
 
-    const { data } = useQuery('get trendings', async() => {
+    const { data } = useQuery('get trendings banner', async() => {
             return await fetch(`https://api.themoviedb.org/3/trending/all/day?language=pt-BR`, {
                 headers: {"Authorization": API_KEY}
             } ).then(res => res.json())

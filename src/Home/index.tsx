@@ -1,7 +1,7 @@
-import { filmes, series } from './genres.tsx'
-import Banner from './components/Banner/index.tsx'
-import Category from './components/Category/index.tsx'
-import Search from './components/Search/index.tsx'
+import { filmes, series } from '../genres.ts'
+import Banner from '../components/Banner/index.tsx'
+import Category from '../components/Category/index.tsx'
+import Search from '../components/Search/index.tsx'
 
 
 type genre = {
@@ -20,7 +20,7 @@ export default function Home() {
         <>
             <Search />
             <Banner />
-            { n.map((e: genre) => <Category id={e.id} type={e.type} name={e.name} key={`discover shows ${e.type} ${e.name}`} /> ) }
+            { n.map((e: genre) => <Category categoryId={e.id} type={e.type} categoryName={e.name} key={`discover shows ${e.type} ${e.name}`} /> ) }
         </>
     )
 }

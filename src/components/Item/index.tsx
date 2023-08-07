@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import Details from '../Details'
 
-type itemProps = {
+type ItemProps = {
     title?: string,
     pic?: string,
     id?: number | undefined,
     type?: string,
 }
 
-const Item: React.FC<itemProps> = function( { title, pic, id, type } ) {
+const Item: React.FC<ItemProps> = function( { title, pic, id, type } ) {
     const [ hover, setHover ] = useState(false)
 
     let skeleton, animate_bg = ''
@@ -38,7 +38,7 @@ const Item: React.FC<itemProps> = function( { title, pic, id, type } ) {
             }
         } } >
 
-                <div className={`bg-zinc-500 bg-contain ${animate_bg}`} style={{width: '150px', height: '225px', backgroundImage: `url(https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${pic})`}} />
+                <div className={`bg-zinc-500 bg-center bg-contain ${animate_bg}`} style={{width: '150px', height: '225px', backgroundImage: `url(https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${pic})`}} />
                 <h2 className={skeleton} style={ {width: '150px'} }> {title} </h2>
                 {(hover && id) && <Details type={type} id={id}/>}
 
