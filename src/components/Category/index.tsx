@@ -5,8 +5,8 @@ import './style.css'
 import Item from '../Item'
 
 type categoryProps = {
-    categoryId?: number,
-    categoryName?: string,
+    categoryId: number,
+    categoryName: string,
     type?: string,
     content?: any[]
 }
@@ -16,8 +16,8 @@ const Category:React.FC<categoryProps> = function( {categoryId, type, categoryNa
     const [skeleton, setSkeleton] = useState(!content?'text-zinc-500 bg-zinc-500 animate-pulse' : '')
     const [ contents, setContents ] = useState(content ?? Array(8).fill(placeholder))
 
-    useQuery(`discover shows ${type} ${categoryName}`, async() => { 
-        if (type && categoryId) { 
+    useQuery(`discover shows ${type} ${categoryName} ${categoryId}`, async() => { 
+        if (type && categoryId && !content) { 
             await new Promise( resolve => setTimeout(resolve, 3000) )
             return fetch(`https://api.themoviedb.org/3/discover/${type}?include_adult=true&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&with_genres=${categoryId}`, {
                 headers: {"Authorization": API_KEY}

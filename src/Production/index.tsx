@@ -106,11 +106,19 @@ const Production: React.FC<{type: string}> = function( {type} ) {
           <div className="relative">
               {trendings?.length > 0 && <Aside name={'Trending'} content={trendings?.slice(0, 7)} />}
               <section className="w-4/5">
-                  {data.seasons?.length > 0 && <Seasons seasons={data.seasons} id={data.id} />}
-                  {data.videos?.results?.length > 0 && <Medias id={data.id} videos={data.videos.results} />}
-                  {data.recommendations?.results?.length > 0 && <Category content={data.recommendations.results} categoryName="Recomendações" />}
-                  {data.similar?.results?.length > 0 && <Category content={data.similar.results} categoryName="Similares" type={type} />}
-                  {data.reviews && <Reviews obj={data.reviews} />}
+                  {data.seasons?.length > 0 && query === data.id && 
+                      <Seasons seasons={data.seasons} id={data.id} /> }
+
+                  {data.videos?.results?.length > 0 && query === data.id && 
+                      <Medias id={data.id} videos={data.videos.results} /> }
+
+                  {data.recommendations?.results?.length > 0 && query === data.id && 
+                      <Category content={data.recommendations.results} categoryName="Recomendações" categoryId={data.id} /> }
+
+                  {data.similar?.results?.length > 0 && query === data.id && 
+                      <Category content={data.similar.results} categoryName="Similares" categoryId={data.id} type={type} /> }
+
+                  { data.reviews && query === data.id && <Reviews obj={data.reviews} /> }
               </section>
           </div>
         </>
