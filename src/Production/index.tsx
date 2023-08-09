@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useQuery } from "react-query"
-import { ProductionDetailsSchema, fetchData } from "./IProduction"
+import { IProductionDetails, ProductionDetailsSchema, fetchData } from "./IProduction"
 import { API_KEY } from "../config"
 import './style.css'
 import Category from "../components/Category"
@@ -11,19 +11,23 @@ import Seasons from "../components/Seasons"
 import Reviews from "../components/Reviews"
 import Medias from "../components/Medias"
 import EmbeddedVideo, { ButtonVideo, findVideoKey } from "../components/EmbeddedVideo"
+import { routesInfo } from "../global"
+import Staff from "../components/Staff"
 
 
 
 const Production: React.FC<{type: string}> = function( {type} ) { 
     const { production_name } = useParams()
-    const [ data, setData ] = useState(ProductionDetailsSchema)
+    const [ data, setData ] = useState(ProductionDetailsSchema as IProductionDetails)
 
     const { data: query } = useQuery('query '+production_name, async() => { 
 
         const queryname = production_name?.replaceAll('-', ' ')
         if ( !queryname ) { return null }
-        const response = await fetchData(`https://api.themoviedb.org/3/search/${type}?query=${queryname}&include_adult=true&language=pt-BR&page=1`, queryname)
+        const id = routesInfo.find(e => e.name === queryname || e.original_title === queryname)?.id
+        if (id) { return id }
 
+        const response = await fetchData(`https://api.themoviedb.org/3/search/${type}?query=${queryname}&include_adult=true&language=pt-BR&page=1`, queryname)
         if ( response ) { return response.id }
         else { return false }
 
@@ -31,7 +35,7 @@ const Production: React.FC<{type: string}> = function( {type} ) {
 
     const { refetch, isLoading } = useQuery(production_name+' page', async() => { 
       if (query) { 
-        const response = await fetchData(`https://api.themoviedb.org/3/${type}/${query}?append_to_response=videos%2Cimages%2Crecommendations%2Csimilar%2Creviews%2Cseasons&language=pt-BR`)
+        const response = await fetchData(`https://api.themoviedb.org/3/${type}/${query}?append_to_response=videos%2Cimages%2Crecommendations%2Csimilar%2Creviews%2Cseasons%2Ccredits&language=pt-BR`)
         setData(response)
       }
 
@@ -57,7 +61,7 @@ const Production: React.FC<{type: string}> = function( {type} ) {
           { !isLoading && 
               <div className="w-screen mb-6 bg-center" style={ {backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${data.backdrop_path})`, height: '567px'} }>
                 <div className="bg-zinc-950/[0.6] w-full h-full relative">
-                  <div className="p-10 flex gap-4 relative">
+                  <div className="px-10 py-7 flex gap-4 relative">
 
                       {/* score */}
                       <Score data={data} />
@@ -109,6 +113,8 @@ const Production: React.FC<{type: string}> = function( {type} ) {
                   {data.seasons?.length > 0 && query === data.id && 
                       <Seasons seasons={data.seasons} id={data.id} /> }
 
+                  {data?.credits && query === data.id && <Staff staff={data.credits} production_companies={data.production_companies} />}
+                  
                   {data.videos?.results?.length > 0 && query === data.id && 
                       <Medias id={data.id} videos={data.videos.results} /> }
 
@@ -132,11 +138,15 @@ export default Production
 // temporadas, recomendados, trending | mídia | reviews, sua avaliação, sua coleção
 
 // staff, opções de coleção, crítica, awards, bilheteria
-// detalhes: Data de lançamento, Países de origem, Centrais de atendimento oficiais (redes sociais), Idiomas, Também conhecido como, Locações de filme, Empresas de produção
+// detalhes: Empresas de produção+staff, Elenco, Lançamentos, Países de origem
+// Também conhecido como, Locações de filme, Data de lançamento, Idiomas, Centrais de atendimento oficiais (redes sociais)
+
 
 // Account States: Get the rating, watchlist and favourite status.
 // keywords?, 
 // imdb id
+
+
 
 
 /*

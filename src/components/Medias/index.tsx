@@ -46,7 +46,7 @@ const Medias: React.FC<MediasProps> = function( {videos, id} ) {
 
 
     return (
-        <section className="medias bg-zinc-800 my-4 mx-2 rounded-xl">
+        <section className="medias bg-zinc-800 my-8 mx-2 rounded-xl">
 
             <div className="tabmedias flex gap-2 p-3">
                 { videos && 

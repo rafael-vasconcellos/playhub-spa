@@ -1,4 +1,13 @@
+import { strip } from "../components/utils"
 import { API_KEY } from "../config"
+
+
+export type IProductionCompanies = {
+    id: number
+    name: string
+    origin_country: string
+    logo_path: string
+}
 
 export const ProductionDetailsSchema = { 
     id: 0,
@@ -18,16 +27,25 @@ export const ProductionDetailsSchema = {
     overview: '',
     poster_path: '',
     backdrop_path: '',
+    seasons: [],
     videos: {results: []},
     images: {results: []},
     recommendations: {results: []},
     similar: {results: []},
-    seasons: [],
     reviews: {results: []},
+    credits: undefined
   
-  }
-  
-  export async function fetchData(url: string, queryname?: string) { 
+}
+
+type SchemaInterface = typeof ProductionDetailsSchema
+
+export interface IProductionDetails extends SchemaInterface {
+    credits: any
+    production_companies: IProductionCompanies[]
+}
+
+
+export async function fetchData(url: string, queryname?: string) { 
     return fetch(url, {headers: {"Authorization": API_KEY} } ).then(response => response.json())
     .then(res => { 
   
@@ -36,14 +54,14 @@ export const ProductionDetailsSchema = {
             for (let indice of res.results) { 
                 let title: string | undefined = indice?.title ?? indice?.name
                 let original: string | undefined = indice?.original_title ?? indice?.original_name
-                title = title?.toLocaleLowerCase().replaceAll(".", "").replaceAll(":", "").replaceAll('-', '')
-                original = original?.toLocaleLowerCase().replaceAll(".", "").replaceAll(":", "").replaceAll('-', '')
-                if (title?.toLowerCase() === queryname || original?.toLowerCase() === queryname) { 
-                  arr.push(indice) 
+                title = strip(title)
+                original = strip(original)
+                if ( title === queryname || original === queryname ) { 
+                  arr.push(indice)
                 }
             }
   
-            if (arr.length === 1 ) {return arr[0]} else {console.log(arr)}
+            if (arr.length > 0 ) {return arr[0]} else {console.log(arr)}
   
   
         } else {
@@ -51,4 +69,6 @@ export const ProductionDetailsSchema = {
         }
   
     } )
-  }
+}
+
+

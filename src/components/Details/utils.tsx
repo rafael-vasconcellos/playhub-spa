@@ -1,4 +1,7 @@
+import { useEffect } from "react"
 import { Link } from "react-router-dom"
+import { routesInfo } from "../../global"
+import { path, strip } from "../utils"
 
 export const ContentSchema = { 
     id: 0,
@@ -43,22 +46,22 @@ export const screen = {
 }
 
 
-export function path(type: string | undefined, title: string | undefined, original: string | undefined) {
-    const route = type===undefined? type : 
-        type==='movie'? 'filme' : 'serie'
-
-    title = title?.toLocaleLowerCase().replaceAll(".", "").replaceAll(":", "").replaceAll(",", "").replaceAll(' ', '-')
-    original = original?.toLocaleLowerCase().replaceAll(".", "").replaceAll(":", "").replaceAll(",", "").replaceAll(' ', '-')
-    const production = title ?? original
-
-    if (route && production) { return '/'+route+'/'+production }
-    else { return '/' }
-}
-
-
 
 
 export const DetailsButtons: React.FC<{type: string | undefined, content: Content, setScreen: any}> = function( {type, content, setScreen} ) {
+
+    useEffect( () => { 
+        const obj = {
+            name: strip(content?.title) ?? strip(content?.name),
+            original_title: strip(content?.original_title) ?? strip(content?.original_name),
+            id: content.id
+        }
+        const { name, original_title, id } = obj
+        if ( name && original_title && id && !routesInfo.includes(obj) ) {
+            routesInfo.push(obj)
+        }
+
+    }, [content] )
 
     return (
         <>

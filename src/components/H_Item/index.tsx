@@ -1,16 +1,26 @@
 import { Link } from "react-router-dom"
-import { path } from "../Details/utils"
+import { useEffect } from "react"
+import { routesInfo } from "../../global"
+import { path, strip } from "../utils"
 
 type ItemProps = { 
-    type?: string,
     title?: string,
-    pic?: string,
-    id?: number | undefined,
     original_title?: string,
+    pic: string,
+    type: string,
+    id: number
 }
 
-const H_Item: React.FC<ItemProps> = function( { type, title, pic, original_title } ) {
+const H_Item: React.FC<ItemProps> = function( { title, pic, original_title, type, id } ) {
     const skeleton = !pic? 'bg-zinc-500' : ''
+    useEffect( () => { 
+        original_title = strip(original_title)
+        const obj = {name: strip(title), original_title, id}
+        const { name } = obj
+        if ( name && original_title && id && !routesInfo.includes(obj) ) {
+            routesInfo.push( obj )
+        }
+    }, [] )
 
     return (
         <Link to={path(type, title, original_title)}>

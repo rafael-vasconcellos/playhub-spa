@@ -20,6 +20,31 @@ export function display(classElement: string | Element, classParent: string, tog
 }
 
 
+export function path(type: string | undefined, title: string | undefined, original: string | undefined) { 
+    const route = type===undefined? type : 
+        type==='movie'? 'filme' : 'serie'
+
+    title = strip(title)?.replaceAll(' ', '-')
+    original = strip(original)?.replaceAll(' ', '-')
+    const production = title ?? original
+
+    if (route && production) { return '/'+route+'/'+production }
+    else { return '/' }
+
+}
+
+
+export function strip(s: string | undefined) {
+    return s?.toLowerCase().replaceAll(".", "").replaceAll(":", "").replaceAll(",", "").replaceAll('-', '')
+}
+
+
+
+
+
+
+
+
 
 
 /*
