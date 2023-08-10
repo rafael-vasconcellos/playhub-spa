@@ -2,7 +2,6 @@ import star from '../../assets/star.png'
 import fire from '../../assets/fire.png'
 
 const Score: React.FC<{data: any}> = function( {data} ) { 
-    console.log(data.popularity)
 
     return (
         <div className="absolute top-6 right-8 flex items-center gap-4">
