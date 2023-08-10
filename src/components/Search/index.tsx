@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
 import './style.css'
 import { API_KEY } from '../../config'
-import { filmes, series } from '../../genres.ts'
+import genres from '../../genres.ts'
 import Item from '../Item/index.tsx'
-import Profile from '../Profile/index.tsx'
 
 export default function Search() {
     let page = 1
@@ -34,9 +33,9 @@ export default function Search() {
 
         if (e.target.value === '') { return false }
         else { setLoading(true) }
-        let query = []
-        query.push( [ filmes.list.find(indice => indice.name.includes(e.target.value))?.id, 'movie' ] )
-        query.push( [ series.list.find(indice => indice.name.includes(e.target.value))?.id, 'tv' ] )
+        let query: [number | undefined, string][] = []
+        query.push( [ genres.filmes.list.find(indice => indice.name.includes(e.target.value))?.id, 'movie' ] )
+        query.push( [ genres.series.list.find(indice => indice.name.includes(e.target.value))?.id, 'tv' ] )
 
         let responses: Promise<any>[] = []
         for (let indice of query) {
@@ -78,8 +77,7 @@ export default function Search() {
 
     return (
         <section className="w-full bg-zinc-950">
-                <Profile href={'/src/assets/profile.jpg'} />
-                <input type="search" className='text-zinc-800' id="search" placeholder='Digite sua pesquisa...' />
+                <input type="search" className='bg-zinc-800' id="search" placeholder='Digite sua pesquisa...' />
                 <div className='results flex flex-wrap justify-center items-start px-10 bg-zinc-950'>
                     {contents.map(e => <Item title={e.title ?? e.name} pic={e.backdrop_path ?? e.poster_path} id={e.id} type={e.type} key={contents.indexOf(e)} />)}
                 </div>

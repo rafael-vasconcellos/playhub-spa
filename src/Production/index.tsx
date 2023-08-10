@@ -13,6 +13,7 @@ import Medias from "../components/Medias"
 import EmbeddedVideo, { ButtonVideo, findVideoKey } from "../components/EmbeddedVideo"
 import { routesInfo } from "../global"
 import Staff from "../components/Staff"
+import Navbar from "../components/Navbar"
 
 
 
@@ -53,11 +54,12 @@ const Production: React.FC<{type: string}> = function( {type} ) {
           headers: {"Authorization": API_KEY}
       } ).then(res => res.json()).then(res => res.results)
 
-  }, { staleTime: 1000*600 /* 10min */ }
-)
+    }, { staleTime: 1000*600 /* 10min */ }
+  )
 
     return (
         <>
+          <Navbar />
           { !isLoading && 
               <div className="w-screen mb-6 bg-center" style={ {backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${data.backdrop_path})`, height: '567px'} }>
                 <div className="bg-zinc-950/[0.6] w-full h-full relative">
@@ -134,17 +136,15 @@ const Production: React.FC<{type: string}> = function( {type} ) {
 
 export default Production
 
-// c.indicativa, ano, duração, nomes alternativos, generos, status | score, total de votos, popularidade
-// temporadas, recomendados, trending | mídia | reviews, sua avaliação, sua coleção
 
-// staff, opções de coleção, crítica, awards, bilheteria
+// c.indicativa, 
+// ano, duração, nomes alternativos, generos, status | score, total de votos, popularidade
+// temporadas, recomendados, trending | mídia | reviews, sua avaliação, sua coleção, imdb id
+// Account States: Get the rating, watchlist and favourite status.
+
 // detalhes: Empresas de produção+staff, Elenco, Lançamentos, Países de origem
 // Também conhecido como, Locações de filme, Data de lançamento, Idiomas, Centrais de atendimento oficiais (redes sociais)
-
-
-// Account States: Get the rating, watchlist and favourite status.
-// keywords?, 
-// imdb id
+// crítica, awards, bilheteria
 
 
 

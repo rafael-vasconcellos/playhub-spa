@@ -1,8 +1,21 @@
-type genres = {
-  list: any[],
-  sorted?: object[]
+export type IGenre = {
+    id: number
+    name: string
+    type: 'movie' | 'tv'
 }
-export const filmes:genres = {
+
+type IGenreList = {
+  list: IGenre[],
+  sorted?: IGenre[]
+}
+
+type IGenres = {
+    series: IGenreList
+    filmes: IGenreList
+    [key: string]: IGenreList
+}
+
+const filmes: IGenreList = {
   list: [
       {
         "id": 28,
@@ -102,7 +115,7 @@ export const filmes:genres = {
 ] }
 
 
-export const series:genres = {
+const series: IGenreList = {
   list: [
       {
         "id": 10759,
@@ -187,3 +200,9 @@ export const series:genres = {
 ] }
 
 
+const genres: IGenres = {
+    series,
+    filmes
+}
+
+export default genres

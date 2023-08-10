@@ -16,6 +16,8 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <QueryClientProvider client={queryClient}>
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/series" element={<Home type='series' />} />
+                <Route path="/filmes" element={<Home type='filmes' />} />
                 <Route path="/filme/:production_name" element={<Production type='movie' />} />
                 <Route path="/serie/:production_name" element={<Production type='tv' />} />
             </Routes>

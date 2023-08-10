@@ -64,7 +64,7 @@ export default function Banner() {
 
 
     return (
-        <section className={`banner w-screen h-screen bg-zinc-950 bg-contain bg-no-repeat bg-center ${animate} mb-6`} style={{backgroundImage: `url(${display.banner})`}} >
+        <section className={`banner w-screen h-screen bg-zinc-950 bg-contain bg-no-repeat ${animate} mb-6`} style={{backgroundImage: `url(${display.banner})`}} >
             <div className='w-full h-full bg-zinc-950/[0.4] flex items-end'>
                 <div className="b-description w-1/2 flex flex-col gap-10 px-10 py-20">
                     <h2 className={`w-fit text-xl ${skeleton}`}>{display.type}</h2>

@@ -34,7 +34,7 @@ const ButtonVideo = function () {
     let trailer_hover: boolean
 
     return (
-        <button className="cursor-pointer py-2 bg-zinc-50 text-zinc-950 font-bold inline-block" 
+        <button className="cursor-pointer p-2 w-fit bg-zinc-50 text-zinc-950 font-bold rounded-xl" 
         onClick={ () => {  
             if (!ytVid.player && ytVid.status) {ytVid.onYouTubeIframeAPIReady()}
             else if (ytVid.player) {ytVid.replay()}
@@ -47,7 +47,8 @@ const ButtonVideo = function () {
                     if (trailer_hover) { ytVid.initializeYouTubeAPI() }
                 }, 200 )
             }
-        } }>Assistir trailer</button>
+        } }>
+            Assistir trailer</button>
     )
 }
 

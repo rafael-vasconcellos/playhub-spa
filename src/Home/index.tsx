@@ -1,26 +1,35 @@
-import { filmes, series } from '../genres.ts'
 import Banner from '../components/Banner/index.tsx'
 import Category from '../components/Category/index.tsx'
-import Search from '../components/Search/index.tsx'
+import Navbar from '../components/Navbar/index.tsx'
+import genres from '../genres.ts'
 
 
-type genre = {
-    id: number,
-    name: string,
-    type: 'movie' | 'tv'
+function get_genres(type?: string) {
+    if (type) {
+        return genres[type].list.sort( () => Math.round(Math.random()) )
+    } else {
+        let list = [
+            ...genres.filmes.list.sort( () => Math.round(Math.random()) ).slice(0, 9), 
+            ...genres.series.list.sort( () => Math.round(Math.random()) ).slice(0, 9)
+        ]
+        list = list.sort(() => Math.round(Math.random()))
+        return list
+
+    }
 }
 
-let n = filmes.list.sort(() => Math.round(Math.random())).slice(0, 9)
-n = [...n, ...series.list.sort(() => Math.round(Math.random())).slice(0, 9)]
-n = n.sort(() => Math.round(Math.random()))
 
-export default function Home() {
+const Home: React.FC<{type?: 'series' | 'filmes'}> = function( {type} ) { 
+    const content = get_genres(type)
 
     return (
         <>
-            <Search />
-            <Banner />
-            { n.map((e: genre) => <Category categoryId={e.id} type={e.type} categoryName={e.name} key={`discover shows ${e.type} ${e.name}`} /> ) }
+            <Navbar />
+            {!type && <Banner />}
+            <div className='h-8'></div>
+            { content.map((e) => <Category categoryId={e.id} type={e.type} categoryName={e.name} key={`discover shows ${e.type} ${e.name}`} /> ) }
         </>
     )
 }
+
+export default Home
