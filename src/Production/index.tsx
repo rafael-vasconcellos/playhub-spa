@@ -45,9 +45,12 @@ const Production: React.FC<{type: string}> = function( {type} ) {
 
 
 
-    useEffect(() => { 
-      refetch()
-    }, [query] )
+    useEffect(() => { refetch() }, [query] )
+    useEffect(() => {
+        let el = document.querySelector('title')
+        if (el) {el.innerText = data?.title ?? data?.name}
+    }, [data])
+
 
     const { data: trendings } = useQuery('get trendings', async() => {
       return await fetch(`https://api.themoviedb.org/3/trending/all/day?language=pt-BR`, {
@@ -56,6 +59,7 @@ const Production: React.FC<{type: string}> = function( {type} ) {
 
     }, { staleTime: 1000*600 /* 10min */ }
   )
+
 
     return (
         <>

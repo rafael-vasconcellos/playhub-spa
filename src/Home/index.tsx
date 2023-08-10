@@ -1,6 +1,6 @@
-import Banner from '../components/Banner/index.tsx'
-import Category from '../components/Category/index.tsx'
-import Navbar from '../components/Navbar/index.tsx'
+import Banner from '../components/Banner'
+import Category from '../components/Category'
+import Navbar from '../components/Navbar'
 import genres from '../genres.ts'
 
 
