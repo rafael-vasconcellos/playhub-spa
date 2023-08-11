@@ -1,7 +1,3 @@
-import { strip } from "../components/utils"
-import { API_KEY } from "../config"
-
-
 export type IProductionCompanies = {
     id: number
     name: string
@@ -45,30 +41,6 @@ export interface IProductionDetails extends SchemaInterface {
 }
 
 
-export async function fetchData(url: string, queryname?: string) { 
-    return fetch(url, {headers: {"Authorization": API_KEY} } ).then(response => response.json())
-    .then(res => { 
-  
-        if (res.results && queryname) { 
-            let arr:any[] = []
-            for (let indice of res.results) { 
-                let title: string | undefined = indice?.title ?? indice?.name
-                let original: string | undefined = indice?.original_title ?? indice?.original_name
-                title = strip(title)
-                original = strip(original)
-                if ( title === queryname || original === queryname ) { 
-                  arr.push(indice)
-                }
-            }
-  
-            if (arr.length > 0 ) {return arr[0]} else {console.log(arr)}
-  
-  
-        } else {
-            return res
-        }
-  
-    } )
-}
+
 
 

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useQuery } from "react-query"
-import { API_KEY } from "../../config"
 import './style.css'
 import { ContentSchema, DetailsButtons, screen } from "./utils"
+import { production_details } from "../../global"
 
 
 
@@ -14,13 +14,9 @@ const Details:React.FC<detailProps> = function( { type, id } ) {
     const [ content, setContent ] = useState( ContentSchema )
 
     const { refetch } = useQuery(`${id} content details`, async() => {
-              // &append_to_response=videos
               //await new Promise( resolve => setTimeout(resolve, 3000) )
-              return fetch(`https://api.themoviedb.org/3/${type}/${id}?language=pt-BR`, {
-                  headers: { "Authorization": API_KEY }
-              } ).then(res => res.json()).then(res => { 
-                  setSkeleton('')
-                  setContent(res)
+              return production_details(id, type).then(res => { 
+                  setSkeleton('') ; setContent(res)
                   return res
               } )
 
@@ -53,7 +49,8 @@ const Details:React.FC<detailProps> = function( { type, id } ) {
                                   <div>
                                       {content.id && <span className={`mr-2 font-bold p-1 ${content.adult? "bg-zinc-950" : "bg-sky-500"} text-zinc-100`}>PG-{content.adult? "18":"13"}</span> }
                                       <span className={skeleton}> 
-                                        { !Number.isNaN(Math.floor(content.runtime / 60))? Math.floor(content.runtime/60)+'h' : '' } 
+                                        { !Number.isNaN(Math.floor(content.runtime / 60)) ?
+                                            Math.floor(content.runtime/60)+'h' : '' }
                                         {(  content.runtime%60 !== 0 && !Number.isNaN(content.runtime % 60)  )? 
                                             content.runtime%60+'min' : ''}
                                       </span><br/>

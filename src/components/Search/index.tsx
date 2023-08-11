@@ -1,27 +1,13 @@
 import { useState, useEffect } from 'react'
 import './style.css'
-import { API_KEY } from '../../config'
 import genres from '../../genres.ts'
 import Item from '../Item/index.tsx'
+import { search, search_discovery } from '../../global.ts'
 
 export default function Search() {
     let page = 1
     const [ contents, setContents ] = useState([] as any[])
     const [ loading, setLoading ] = useState(false)
-
-    async function fetchData(url: string, type: string) {
-        return fetch(url, {headers: {"Authorization": API_KEY} } ).then(response => response.json())
-        .then(res => { 
-            if ( (res.results?.length ?? 0) > 0 ) {
-                res.results.forEach( (indice:any) => {indice.type = type} )
-                setContents( 
-                    (prevState) => [...prevState, ...res.results].sort( () => Math.round(Math.random()) )
-                )
-                return res
-            } 
-
-        } )
-    }
 
     async function get_content(e:any) { 
         const section:any = document.querySelector('section:has(.results)')
@@ -41,12 +27,16 @@ export default function Search() {
         for (let indice of query) {
             if (indice[0]) {
                 responses.push( 
-                    fetchData(`https://api.themoviedb.org/3/discover/${indice[1]}?include_adult=true&include_video=false&language=pt-BR&page=${page}&sort_by=popularity.desc&with_genres=${indice[0]}`, indice[1]) 
+                    search_discovery(indice[0], indice[1], page).then(res => {
+                        if (res) {setContents(res)}
+                    } )
                 )
             }
 
             responses.push( 
-                fetchData(`https://api.themoviedb.org/3/search/${indice[1]}?query=${e.target.value}&include_adult=true&language=pt-BR&page=${page}`, indice[1])
+                search(e.target.value, indice[1], page).then(res => {
+                    if (res) {setContents(res)}
+                } )
             )
         }
 

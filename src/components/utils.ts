@@ -1,3 +1,5 @@
+import { strip } from "../global"
+
 export function display(classElement: string | Element, classParent: string, toggleClass: string): void { 
     const element = typeof classElement==='string'? 
         document.querySelector('.'+classElement) : classElement
@@ -34,9 +36,7 @@ export function path(type: string | undefined, title: string | undefined, origin
 }
 
 
-export function strip(s: string | undefined) {
-    return s?.toLowerCase().replaceAll(".", "").replaceAll(":", "").replaceAll(",", "").replaceAll('-', '')
-}
+
 
 
 

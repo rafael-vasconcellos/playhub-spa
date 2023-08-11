@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import { routesInfo } from "../../global"
-import { path, strip } from "../utils"
+import { routesInfo, strip } from "../../global"
+import { path } from "../utils"
 
 export const ContentSchema = { 
     id: 0,
@@ -57,7 +57,8 @@ export const DetailsButtons: React.FC<{type: string | undefined, content: Conten
             id: content.id
         }
         const { name, original_title, id } = obj
-        if ( name && original_title && id && !routesInfo.includes(obj) ) {
+        if ( name && original_title && id && !routesInfo.includes(obj) ) { 
+            routesInfo.length = 0
             routesInfo.push(obj)
         }
 

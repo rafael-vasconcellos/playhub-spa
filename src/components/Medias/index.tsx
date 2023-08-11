@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import { useQuery } from "react-query"
 import { IVideo, IImage } from "../Media/IMedia"
-import { API_KEY } from "../../config"
 import Media from "../Media"
 import { display } from "../utils"
 import './style.css'
+import { get_images } from "../../global"
 
 
 type IImages = {
@@ -31,12 +31,11 @@ const Medias: React.FC<MediasProps> = function( {videos, id} ) {
         logos: 'Logos',
         posters: 'Posters'
     }
+
     const [ imagesData, setImages ] = useState<IImages>( {} as IImages )
 
     useQuery(`get images from ${id}`, async() => { 
-        return fetch(`https://api.themoviedb.org/3/movie/${id}/images`, { headers: { 
-            "Authorization": API_KEY
-        } } ).then(res => res.json()).then(res => setImages(res))
+        return get_images(id).then(res => setImages(res))
     }, {staleTime: Infinity} )
 
     useEffect( () => { 

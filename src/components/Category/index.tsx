@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useQuery } from 'react-query'
-import { API_KEY } from '../../config'
 import './style.css'
 import Item from '../Item'
+import { discover } from '../../global'
 
 type categoryProps = {
     categoryId: number,
@@ -19,9 +19,7 @@ const Category:React.FC<categoryProps> = function( {categoryId, type, categoryNa
     useQuery(`discover shows ${type} ${categoryName} ${categoryId}`, async() => { 
         if (type && categoryId && !content) { 
             await new Promise( resolve => setTimeout(resolve, 3000) )
-            return fetch(`https://api.themoviedb.org/3/discover/${type}?include_adult=true&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&with_genres=${categoryId}`, {
-                headers: {"Authorization": API_KEY}
-            } ).then(res => res.json()).then(res => { 
+            return discover(categoryId, type).then(res => { 
                 setContents(() => res.results)
                 setSkeleton(() => '')
                 return res

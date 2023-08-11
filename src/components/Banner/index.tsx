@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { API_KEY } from '../../config'
 import { useQuery } from 'react-query'
+import { trending } from '../../global'
 
 export default function Banner() {
     const [skeleton, setSkeleton] = useState('text-zinc-500 bg-zinc-500')
@@ -14,9 +14,7 @@ export default function Banner() {
     } )
 
     const { data } = useQuery('get trendings banner', async() => {
-            return await fetch(`https://api.themoviedb.org/3/trending/all/day?language=pt-BR`, {
-                headers: {"Authorization": API_KEY}
-            } ).then(res => res.json())
+            return await trending()
 
         }, { staleTime: 1000*180 /* 3min */ }
     )

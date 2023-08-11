@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { API_KEY } from "../../config"
 import { useQuery } from "react-query";
 import { display } from "../utils";
+import { get_season } from "../../global";
 
 
 const EpisodesSchema = { episodes: [], season_number: 0, }
@@ -10,9 +10,7 @@ const Seasons: React.FC<{seasons: any[], id: number}> = function( {seasons, id} 
     const [ episodes, setEpisodes ] = useState<typeof EpisodesSchema[]>( [EpisodesSchema] )
     useQuery('get epidodes info', async() => { 
         const promises = seasons.map(indice => {
-            return fetch(`https://api.themoviedb.org/3/tv/${id}/season/${indice.season_number}?language=pt-BR`, {
-              headers: { "Authorization": API_KEY }
-            }).then(res => res.json());
+            return get_season(id, indice.season_number)
         } );
 
         Promise.all(promises).then(res => { 

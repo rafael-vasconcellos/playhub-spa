@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useQuery } from "react-query"
-import { IProductionDetails, ProductionDetailsSchema, fetchData } from "./IProduction"
-import { API_KEY } from "../config"
+import { IProductionDetails, ProductionDetailsSchema } from "./IProduction"
 import './style.css'
 import Category from "../components/Category"
 import Aside from "../components/Aside"
@@ -11,7 +10,7 @@ import Seasons from "../components/Seasons"
 import Reviews from "../components/Reviews"
 import Medias from "../components/Medias"
 import EmbeddedVideo, { ButtonVideo, findVideoKey } from "../components/EmbeddedVideo"
-import { routesInfo } from "../global"
+import { filterData, get_routes, production_details, trending } from "../global"
 import Staff from "../components/Staff"
 import Navbar from "../components/Navbar"
 
@@ -25,40 +24,39 @@ const Production: React.FC<{type: string}> = function( {type} ) {
 
         const queryname = production_name?.replaceAll('-', ' ')
         if ( !queryname ) { return null }
-        const id = routesInfo.find(e => e.name === queryname || e.original_title === queryname)?.id
+        const id = get_routes(queryname)
         if (id) { return id }
 
-        const response = await fetchData(`https://api.themoviedb.org/3/search/${type}?query=${queryname}&include_adult=true&language=pt-BR&page=1`, queryname)
+        const response = await filterData(type, queryname)
         if ( response ) { return response.id }
         else { return false }
 
     }, {staleTime: Infinity} )
 
+
     const { refetch, isLoading } = useQuery(production_name+' page', async() => { 
       if (query) { 
-        const response = await fetchData(`https://api.themoviedb.org/3/${type}/${query}?append_to_response=videos%2Cimages%2Crecommendations%2Csimilar%2Creviews%2Cseasons%2Ccredits&language=pt-BR`)
+        const append = "&append_to_response=videos%2Cimages%2Crecommendations%2Csimilar%2Creviews%2Cseasons%2Ccredits"
+        const response = await production_details(query, type, append)
         setData(response)
       }
 
     }, {staleTime: 1000 * 600, enabled: true} )
 
 
+    const { data: trendings } = useQuery('get trendings', async() => {
+      return await trending().then(res => res.results)
 
+    }, { staleTime: 1000*600 /* 10min */ }
+  )
 
-    useEffect(() => { refetch() }, [query] )
+  
+
+    useEffect(() => { refetch();console.log(query) }, [query] )
     useEffect(() => {
         let el = document.querySelector('title')
         if (el) {el.innerText = data?.title ?? data?.name}
     }, [data])
-
-
-    const { data: trendings } = useQuery('get trendings', async() => {
-      return await fetch(`https://api.themoviedb.org/3/trending/all/day?language=pt-BR`, {
-          headers: {"Authorization": API_KEY}
-      } ).then(res => res.json()).then(res => res.results)
-
-    }, { staleTime: 1000*600 /* 10min */ }
-  )
 
 
     return (
@@ -89,7 +87,7 @@ const Production: React.FC<{type: string}> = function( {type} ) {
                               </p>
                           </div>
 
-                          { findVideoKey(data?.videos?.results) && <ButtonVideo />}
+                          { findVideoKey(data?.videos?.results) && data.id === query && <ButtonVideo />}
 
                           <div>
                               <h1 className="font-bold text-xl my-2">Sinopse</h1>
@@ -105,7 +103,7 @@ const Production: React.FC<{type: string}> = function( {type} ) {
                   </div>
 
 
-                  { data?.videos?.results?.length > 0 && (
+                  { data?.videos?.results?.length > 0 && data.id === query && (
                       <EmbeddedVideo videos={data.videos.results} />
                   ) }
 
