@@ -29,3 +29,8 @@ src/api
 src/api/*.env
 src/config.ts
 src/guest_auth.ts
+
+dist/*.html
+dist/*.js
+dist/**/*.js
+dist/**/*.css

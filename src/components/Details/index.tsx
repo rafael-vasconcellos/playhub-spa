@@ -47,7 +47,7 @@ const Details:React.FC<detailProps> = function( { type, id } ) {
                       <div className="relative">
                           <div className="w-full px-3 py-4"> {/* primeira coluna */}
                                   <div>
-                                      {content.id && <span className={`mr-2 font-bold p-1 ${content.adult? "bg-zinc-950" : "bg-sky-500"} text-zinc-100`}>PG-{content.adult? "18":"13"}</span> }
+                                      {content.id !== 0 && <span className={`mr-2 font-bold p-1 ${content.adult? "bg-zinc-950" : "bg-sky-500"} text-zinc-100`}>PG-{content.adult? "18":"13"}</span> }
                                       <span className={skeleton}> 
                                         { !Number.isNaN(Math.floor(content.runtime / 60)) ?
                                             Math.floor(content.runtime/60)+'h' : '' }

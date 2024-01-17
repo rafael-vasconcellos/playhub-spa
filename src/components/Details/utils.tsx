@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { routesInfo, strip } from "../../global"
 import { path } from "../utils"
+import { IProductionDetails } from "../../global"
 
 export const ContentSchema = { 
     id: 0,
@@ -48,7 +49,11 @@ export const screen = {
 
 
 
-export const DetailsButtons: React.FC<{type: string | undefined, content: Content, setScreen: any}> = function( {type, content, setScreen} ) {
+export const DetailsButtons: React.FC< {
+        type: string | undefined, 
+        content: Content, 
+        setScreen: any
+    } > = function( {type, content, setScreen} ) {
 
     useEffect( () => { 
         const obj = {
@@ -97,25 +102,3 @@ export const DetailsButtons: React.FC<{type: string | undefined, content: Conten
 
 
 
-/*
-
-type Content = {
-    id: number | null,
-    title: string,
-    name: string,
-    original_title: string,
-    original_name: string,
-    genres: {name: string, id: number | string}[],
-    adult: boolean,
-    overview: string,
-    vote_average: number | string,
-    popularity: number | string,
-    runtime: number,
-    release_date: string,
-    poster_path: string,
-    backdrop_path: string,
-    video: string,
-    production_companies: {name: string}[]
-}
-
-*/

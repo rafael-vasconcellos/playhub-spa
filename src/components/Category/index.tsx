@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
-import './style.css'
-import Item from '../Item'
 import { discover } from '../../global'
+import Item from '../Item'
+import { IProductionDetails } from '../../global'
+import './style.css'
+
+
 
 type categoryProps = {
     categoryId: number,
@@ -12,22 +15,28 @@ type categoryProps = {
 }
 
 const Category:React.FC<categoryProps> = function( {categoryId, type, categoryName, content} ) { 
-    const placeholder = {title: '', name: '', backdrop_path: '', poster_path: '', id: undefined}
-    const [skeleton, setSkeleton] = useState(!content?'text-zinc-500 bg-zinc-500 animate-pulse' : '')
-    const [ contents, setContents ] = useState(content ?? Array(8).fill(placeholder))
+    const placeholderSchema = {title: '', name: '', backdrop_path: '', poster_path: '', id: undefined}
+    const placeholder = Array(8).fill(placeholderSchema)
+    const [ contents, setContents ] = useState(content ?? placeholder)
+    const [ skeleton, setSkeleton ] = useState(!content? 'text-zinc-500 bg-zinc-500 animate-pulse' : '')
 
-    useQuery(`discover shows ${type} ${categoryName} ${categoryId}`, async() => { 
+    const { data: query } = useQuery(`discover shows ${type} ${categoryName} ${categoryId}`, async() => { 
         if (type && categoryId && !content) { 
             await new Promise( resolve => setTimeout(resolve, 3000) )
-            return discover(categoryId, type).then(res => { 
-                setContents(() => res.results)
-                setSkeleton(() => '')
-                return res
-            } )
+            const response = await discover(categoryId, type)
+            return response
         }
 
         }, { staleTime: 1000*180 /* 3min */ }
     )
+
+    useEffect( () => { 
+        if (query?.length) { 
+            setContents(query)
+            setSkeleton(() => '')
+        }
+    }, [query] )
+
 
     return (
         <section className='category'>
@@ -49,7 +58,7 @@ const Category:React.FC<categoryProps> = function( {categoryId, type, categoryNa
 
                         <div className='flex gap-5 items-start px-3 py-4 overflow-x-scroll overflow-y-hidden scroll-smooth'>
 
-                            {contents.map(e => <Item title={e.title ?? e.name} pic={e.poster_path} id={e.id} type={type ?? e.media_type} key={`${e.id ?? Math.random()}`} />)}
+                            {contents.map( (e: IProductionDetails) => <Item title={e.title ?? e.name} pic={e.poster_path} id={e.id} type={type ?? e.media_type} key={`${e.id ?? Math.random()}`} />)}
 
                         </div>
 

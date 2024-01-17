@@ -10,8 +10,8 @@ type IGenreList = {
 }
 
 type IGenres = {
-    series: IGenreList
-    filmes: IGenreList
+    movie: IGenreList
+    tv: IGenreList
     [key: string]: IGenreList
 }
 
@@ -201,8 +201,8 @@ const series: IGenreList = {
 
 
 const genres: IGenres = {
-    series,
-    filmes
+    tv: series,
+    movie: filmes
 }
 
 export default genres

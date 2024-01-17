@@ -1,11 +1,11 @@
 section > #search {
     height: 2.5rem;
-    width: 50%;
+    width: 35%;
     border-radius: 999px;
     position: absolute;
     z-index: 2;
     top: 10px;
-    left: 25%;
+    left: 32%;
     padding: 0 20px;
 }
 

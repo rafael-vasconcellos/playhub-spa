@@ -1,4 +1,4 @@
-import { IProductionCompanies } from "../../Production/IProduction"
+import { IProductionCompanies } from "../../global"
 import Person, { ICastPerson, ICrewPerson } from "../Person"
 
 

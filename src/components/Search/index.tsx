@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react'
 import './style.css'
 import genres from '../../genres.ts'
 import Item from '../Item/index.tsx'
-import { search, search_discovery } from '../../global.ts'
+import { search, search_genre } from '../../global.ts'
+
+
 
 export default function Search() {
     let page = 1
@@ -20,14 +22,14 @@ export default function Search() {
         if (e.target.value === '') { return false }
         else { setLoading(true) }
         let query: [number | undefined, string][] = []
-        query.push( [ genres.filmes.list.find(indice => indice.name.includes(e.target.value))?.id, 'movie' ] )
-        query.push( [ genres.series.list.find(indice => indice.name.includes(e.target.value))?.id, 'tv' ] )
+        query.push( [ genres.movie.list.find(indice => indice.name.includes(e.target.value))?.id, 'movie' ] )
+        query.push( [ genres.tv.list.find(indice => indice.name.includes(e.target.value))?.id, 'tv' ] )
 
         let responses: Promise<any>[] = []
         for (let indice of query) {
             if (indice[0]) {
                 responses.push( 
-                    search_discovery(indice[0], indice[1], page).then(res => {
+                    search_genre(indice[0], indice[1], page).then(res => {
                         if (res) {setContents(res)}
                     } )
                 )

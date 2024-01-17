@@ -12,4 +12,10 @@
     transition: padding-bottom 0.5s ease-in-out;
 }
 
+@media screen and (hover: none) { 
+    .carrosel-itens > div.cursor-pointer {
+        display: none;
+    }
+}
+
 

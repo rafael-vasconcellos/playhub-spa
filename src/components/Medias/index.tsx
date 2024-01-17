@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { useQuery } from "react-query"
+import { get_images } from "../../global"
 import { IVideo, IImage } from "../Media/IMedia"
 import Media from "../Media"
 import { display } from "../utils"
 import './style.css'
-import { get_images } from "../../global"
+
 
 
 type IImages = {
@@ -35,7 +36,9 @@ const Medias: React.FC<MediasProps> = function( {videos, id} ) {
     const [ imagesData, setImages ] = useState<IImages>( {} as IImages )
 
     useQuery(`get images from ${id}`, async() => { 
-        return get_images(id).then(res => setImages(res))
+        return get_images(id).then(res => { console.log(res)
+            if (res?.success) { setImages(res) } 
+        } )
     }, {staleTime: Infinity} )
 
     useEffect( () => { 

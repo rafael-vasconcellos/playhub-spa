@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useQuery } from "react-query"
-import { IProductionDetails, ProductionDetailsSchema } from "./IProduction"
+import { routeSearch, get_routes, production_details, trending } from "../global"
+import { IProductionDetails, ProductionDetailsSchema } from "../global"
 import './style.css'
 import Category from "../components/Category"
 import Aside from "../components/Aside"
@@ -10,7 +11,6 @@ import Seasons from "../components/Seasons"
 import Reviews from "../components/Reviews"
 import Medias from "../components/Medias"
 import EmbeddedVideo, { ButtonVideo, findVideoKey } from "../components/EmbeddedVideo"
-import { filterData, get_routes, production_details, trending } from "../global"
 import Staff from "../components/Staff"
 import Navbar from "../components/Navbar"
 
@@ -27,14 +27,14 @@ const Production: React.FC<{type: string}> = function( {type} ) {
         const id = get_routes(queryname)
         if (id) { return id }
 
-        const response = await filterData(type, queryname)
+        const response = await routeSearch(type, queryname)
         if ( response ) { return response.id }
         else { return false }
 
     }, {staleTime: Infinity} )
 
 
-    const { refetch, isLoading } = useQuery(production_name+' page', async() => { 
+    const { refetch } = useQuery(production_name+' page', async() => { 
       if (query) { 
         const append = "&append_to_response=videos%2Cimages%2Crecommendations%2Csimilar%2Creviews%2Cseasons%2Ccredits"
         const response = await production_details(query, type, append)
@@ -62,8 +62,8 @@ const Production: React.FC<{type: string}> = function( {type} ) {
     return (
         <>
           <Navbar />
-          { !isLoading && 
-              <div className="w-screen mb-6 bg-center" style={ {backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${data.backdrop_path})`, height: '567px'} }>
+          { data?.id !== undefined && data.id !== 0 && 
+              <div className="w-screen h-fit mb-6 bg-center" style={ {backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${data.backdrop_path})`} }>
                 <div className="bg-zinc-950/[0.6] w-full h-full relative">
                   <div className="px-10 py-7 flex gap-4 relative">
 

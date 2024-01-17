@@ -26,7 +26,7 @@ const Media: React.FC<MediaProps> = function( { name, medias, imageType } ) {
 
                         <div className='flex gap-5 items-start px-3 py-4 overflow-x-scroll overflow-y-visible scroll-smooth'>
 
-                            {medias.map(e => {
+                            {medias?.map(e => {
                                 if (e.key) { return <Videos indice={e} key={e.key} /> }
                                 else if (imageType) { return <Images indice={e} imageType={imageType} key={imageType+medias.indexOf(e)} /> }
                             }

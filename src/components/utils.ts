@@ -1,8 +1,13 @@
 import { strip } from "../global"
 
-export function display(classElement: string | Element, classParent: string, toggleClass: string): void { 
+export function display(
+        classElement: string | Element, 
+        classParent: string, 
+        toggleClass: string
+    ): void { 
+
     const element = typeof classElement==='string'? 
-        document.querySelector('.'+classElement) : classElement
+            document.querySelector('.'+classElement) : classElement
     const condition = element?.className?.includes(toggleClass)
     const parent = document.querySelector('.'+classParent)?.children
     if (parent && toggleClass === 'hidden') {
@@ -22,7 +27,12 @@ export function display(classElement: string | Element, classParent: string, tog
 }
 
 
-export function path(type: string | undefined, title: string | undefined, original: string | undefined) { 
+export function path(
+        type: string | undefined, 
+        title: string | undefined, 
+        original: string | undefined
+    ) { 
+
     const route = type===undefined? type : 
         type==='movie'? 'filme' : 'serie'
 
@@ -38,26 +48,6 @@ export function path(type: string | undefined, title: string | undefined, origin
 
 
 
-
-
-
-
-
-
-
-
-
-/*
-
-declare global {
-  interface Window {
-    YT: {
-      Player: typeof Player;
-    };
-  }
-}
-
-*/
 
 
 export class YTAPI { 
@@ -131,3 +121,18 @@ export class YTAPI {
         }
     }
 }
+
+
+
+
+/*
+
+declare global {
+  interface Window {
+    YT: {
+      Player: typeof Player;
+    };
+  }
+}
+
+*/
