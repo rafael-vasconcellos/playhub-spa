@@ -1,7 +1,7 @@
 import Banner from '../components/Banner'
 import Category from '../components/Category'
 import Navbar from '../components/Navbar'
-import genres from '../genres.ts'
+import genres from '../genres'
 
 
 
