@@ -22,7 +22,7 @@ const Production: React.FC<{type: string}> = function( {type} ) {
 
     const { data: query } = useQuery('query '+production_name, async() => { 
 
-        const queryname = production_name?.replaceAll('-', ' ')
+        const queryname = typeof production_name === 'string'? production_name?.replaceAll('-', ' ') : null
         if ( !queryname ) { return null }
         const id = get_routes(queryname)
         if (id) { return id }
