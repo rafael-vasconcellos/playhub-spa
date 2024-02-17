@@ -111,11 +111,6 @@ export async function routeSearch(type: string, queryname: string) {
     } )
 }
 
-export async function discover(categoryId: number, type: string) { 
-    return await fetchData(`https://api.themoviedb.org/3/discover/${type}?include_adult=true&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&with_genres=${categoryId}`)
-    .then(res => res?.results)
-}
-
 export async function get_images(id: number) {
     return await fetchData(`https://api.themoviedb.org/3/movie/${id}/images`)
 }
@@ -124,12 +119,6 @@ export async function get_season(id: number, season_number: number) {
     return await fetchData(`https://api.themoviedb.org/3/tv/${id}/season/${season_number}?language=pt-BR`)
 }
 
-// 10min
-export async function trending() {
-    return await fetchData(`https://api.themoviedb.org/3/trending/all/day?language=pt-BR`)
-}
-
-// 10min
 export async function production_details(
     id: number | undefined, 
     type: string | undefined, 
@@ -140,6 +129,16 @@ export async function production_details(
     return await fetchData(`https://api.themoviedb.org/3/${type}/${id}?language=pt-BR`+append)
 }
 
+// 10min
+export async function discover(categoryId: number, type: string) { 
+    return await fetchData(`https://api.themoviedb.org/3/discover/${type}?include_adult=true&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&with_genres=${categoryId}`)
+    .then(res => res?.results)
+}
+
+// 10min
+export async function trending() {
+    return await fetchData(`https://api.themoviedb.org/3/trending/all/day?language=pt-BR`)
+}
 
 
 
@@ -160,7 +159,10 @@ export async function production_details(
 
 
 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+
 async function query(url: string, type: string) {
     return await fetchData(url)
     .then(res => { 
@@ -183,6 +185,7 @@ export async function search(
     return await query(`https://api.themoviedb.org/3/search/${type}?query=${queryname}&include_adult=true&language=pt-BR&page=${page}`, type)
 }
 
+// 10min
 export async function search_genre(
         categoryId: string | number, 
         type: string, 
