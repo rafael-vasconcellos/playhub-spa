@@ -6,7 +6,6 @@ import genres from '../../genres'
 
 
 
-
 export default function Banner() { 
     const [ small_screen, setScreen ] = useState(false)
     const [ animate, setAnimate ] = useState('animate-pulse')

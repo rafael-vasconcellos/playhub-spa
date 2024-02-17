@@ -1,36 +1,28 @@
+import { ReactNode } from "react"
 import { strip } from "../global"
 
-export function display(
-        classElement: string | Element, 
-        classParent: string, 
-        toggleClass: string
-    ): void { 
 
-    const element = typeof classElement==='string'? 
-            document.querySelector('.'+classElement) : classElement
-    const condition = element?.className?.includes(toggleClass)
-    const parent = document.querySelector('.'+classParent)?.children
-    if (parent && toggleClass === 'hidden') {
-        for (let indice of Array.from(parent)) {
-            indice.classList.add(toggleClass)
-        }
+type IShowProps = {
+    when: boolean
+    children: ReactNode
+    fallback?: ReactNode
+}
 
-    } else if (parent) {
-        for (let indice of Array.from(parent)) {
-            indice.classList.remove(toggleClass)
-        }
-    }
+export const Show: React.FC<IShowProps> = function( {when: condition, children, fallback} ) {
 
-    if (condition && toggleClass === 'hidden') { element?.classList?.remove(toggleClass) }
-    else if (!condition && toggleClass !== 'hidden') { element?.classList?.add(toggleClass) }
-
+    return (
+        <>
+            { condition? children : fallback }
+        </>
+    )
 }
 
 
 export function path(
-        type: string | undefined, 
-        title: string | undefined, 
-        original: string | undefined
+        type: string, 
+        id: number, 
+        title?: string, 
+        original?: string, 
     ) { 
 
     const route = type===undefined? type : 
@@ -40,12 +32,39 @@ export function path(
     original = strip(original)?.replaceAll(' ', '-')
     const production = title ?? original
 
-    if (route && production) { return '/'+route+'/'+production }
-    else { return '/' }
-
+    if (!type || !id) { return '' }
+    else if (route && production) { return '/'+route+'/'+production+'-'+id }
+    else { return '' }
 }
 
 
+
+
+export function display(
+    classElement: string | Element, 
+    classParent: string, 
+    toggleClass: string
+): void { 
+
+const element = typeof classElement==='string'? 
+        document.querySelector('.'+classElement) : classElement
+const condition = element?.className?.includes(toggleClass)
+const parent = document.querySelector('.'+classParent)?.children
+if (parent && toggleClass === 'hidden') {
+    for (let indice of Array.from(parent)) {
+        indice.classList.add(toggleClass)
+    }
+
+} else if (parent) {
+    for (let indice of Array.from(parent)) {
+        indice.classList.remove(toggleClass)
+    }
+}
+
+if (condition && toggleClass === 'hidden') { element?.classList?.remove(toggleClass) }
+else if (!condition && toggleClass !== 'hidden') { element?.classList?.add(toggleClass) }
+
+}
 
 
 

@@ -36,7 +36,7 @@ const Medias: React.FC<MediasProps> = function( {videos, id} ) {
     const [ imagesData, setImages ] = useState<IImages>( {} as IImages )
 
     useQuery(`get images from ${id}`, async() => { 
-        return get_images(id).then(res => { console.log(res)
+        return get_images(id).then(res => { //console.log(res)
             if (res?.success) { setImages(res) } 
         } )
     }, {staleTime: Infinity} )

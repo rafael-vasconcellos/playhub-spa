@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
 import { discover } from '../../global'
 import Item from '../Item'
@@ -7,41 +6,37 @@ import './style.css'
 
 
 
-type categoryProps = {
-    categoryId: number,
+type categoryProps = { 
     categoryName: string,
+    categoryId: number | null,
     type?: string,
     content?: any[]
 }
 
-const Category:React.FC<categoryProps> = function( {categoryId, type, categoryName, content} ) { 
+const Category:React.FC<categoryProps> = function( {categoryName, categoryId, type, content} ) { 
     const placeholderSchema = {title: '', name: '', backdrop_path: '', poster_path: '', id: undefined}
     const placeholder = Array(8).fill(placeholderSchema)
-    const [ contents, setContents ] = useState(content ?? placeholder)
-    const [ skeleton, setSkeleton ] = useState(!content? 'text-zinc-500 bg-zinc-500 animate-pulse' : '')
 
-    const { data: query } = useQuery(`discover shows ${type} ${categoryName} ${categoryId}`, async() => { 
+    const { data } = useQuery(`discover shows ${type} ${categoryName} ${categoryId}`, async() => { 
         if (type && categoryId && !content) { 
             await new Promise( resolve => setTimeout(resolve, 3000) )
             const response = await discover(categoryId, type)
             return response
-        }
 
-        }, { staleTime: 1000*180 /* 3min */ }
+        } else if (content) { return content }
+        else { return placeholder }
+
+        }, { staleTime: 1000*180, /* 3min */  placeholderData: placeholder,  }
     )
 
-    useEffect( () => { 
-        if (query?.length) { 
-            setContents(query)
-            setSkeleton(() => '')
-        }
-    }, [query] )
+    const skeleton = !data[0]?.id? 'text-zinc-500 bg-zinc-500 animate-pulse' : ''
+
 
 
     return (
         <section className='category'>
                 <h1 className={`${skeleton} px-2 inline-block text-2xl font-bold`}>
-                    { content? categoryName : 
+                    { content || !categoryId? categoryName : 
                         (type==='tv'? 'Séries de ' : 'Filmes de ') + categoryName 
                     }
                 </h1>
@@ -58,7 +53,7 @@ const Category:React.FC<categoryProps> = function( {categoryId, type, categoryNa
 
                         <div className='flex gap-5 items-start px-3 py-4 overflow-x-scroll overflow-y-hidden scroll-smooth'>
 
-                            {contents.map( (e: IProductionDetails) => <Item title={e.title ?? e.name} pic={e.poster_path} id={e.id} type={type ?? e.media_type} key={`${e.id ?? Math.random()}`} />)}
+                            {data?.map( (e: IProductionDetails) => <Item title={e.title ?? e.name} pic={e.poster_path} id={e.id} type={type ?? e.media_type} key={`${e.id ?? Math.random()}`} />)}
 
                         </div>
 

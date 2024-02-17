@@ -1,35 +1,41 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useQuery } from "react-query"
 import './style.css'
-import { ContentSchema, DetailsButtons, screen } from "./utils"
-import { production_details } from "../../global"
+import { DetailsButtons, screen } from "./utils"
+import { IProductionDetails, production_details, ProductionDetailsSchema } from "../../global"
 
 
 
-type detailProps = {type: string | undefined, id: number | undefined}
+type detailProps = {type?: string, id?: number}
+
+/*
+    está sendo inferido o tipo do generic "T", "U" é uma variável de tipo
+    especialmente útil em cenários como tipagem condicional, composição de tipos genéricos e inferência de 
+    tipos em callbacks e funções de ordem superior.
+*/
+type ArrayType<T> = T extends (infer U)[]? U : T
+
+type IGenre = ArrayType<IProductionDetails['genres']>
+
+const ContentSchema = Object.assign(ProductionDetailsSchema, {
+    overview: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, placeat veniam quas dolor facilis soluta, consectetur magnam ut eos architecto similique eius porro amet possimus commodi rerum nesciunt facere eum.',
+    vote_average: 7.814,
+    popularity: 2947.91,
+    runtime: 92,
+    release_date: '2022',
+} )
 
 const Details:React.FC<detailProps> = function( { type, id } ) { 
-    const [ skeleton, setSkeleton ] = useState('text-zinc-500 bg-zinc-500 animate-pulse')
     const [ screen_status, setScreen ] = useState( screen.normal )
-    const [ content, setContent ] = useState( ContentSchema )
 
-    const { refetch } = useQuery(`${id} content details`, async() => {
+    const { data: content } = useQuery(`${id} content details`, async() => {
               //await new Promise( resolve => setTimeout(resolve, 3000) )
-              return production_details(id, type).then(res => { 
-                  setSkeleton('') ; setContent(res)
-                  return res
-              } )
+              return await production_details(id, type).then(res => res)
 
-        }, { staleTime: 1000*180 /* 3min */, enabled: !content.id }
+        }, { staleTime: 1000*180 /* 3min */, placeholderData: ContentSchema }
     )
 
-
-    useEffect( () => {
-        if (!content.id) {
-            refetch()
-        }
-
-    }, [content.id])
+    const skeleton = !content.id? 'text-zinc-500 bg-zinc-500 animate-pulse' : ''
 
 
     return (
@@ -59,7 +65,7 @@ const Details:React.FC<detailProps> = function( { type, id } ) {
                                   <p className={`my-1 ${skeleton}`}>{content.release_date?.slice(0, 4)}</p>
 
                                   <ul className={`flex gap-2 my-2 flex-wrap ${screen_status.stats}`}>
-                                          {content?.genres?.map(e => <li className={skeleton} key={e.id? e.id : Math.random()}> {e.name} </li>)}
+                                          {content?.genres?.map( (e: IGenre) => <li className={skeleton} key={e.id? e.id : Math.random()}> {e.name} </li>)}
                                   </ul>
 
                                   <div className={`py-2 ${skeleton}`}>Média: {content.vote_average}<br/>Popularidade: {content.popularity}</div>
@@ -70,7 +76,7 @@ const Details:React.FC<detailProps> = function( { type, id } ) {
                           {/* segunda coluna */}
                           <div className={`${screen_status.more} absolute top-0 right-0 w-1/2 px-2 py-8 flex flex-col gap-2`}>
                                   <div>
-                                      Produção: {content?.production_companies?.map(e => {
+                                      Produção: {content?.production_companies?.map( (e: IGenre) => {
                                           if (content.production_companies.indexOf(e) !== content.production_companies.length-1) { 
                                               return`${e.name}, `
                                           } else {
@@ -79,7 +85,7 @@ const Details:React.FC<detailProps> = function( { type, id } ) {
                                       } ) }
                                   </div>
                                   <div>
-                                      Gêneros: {content?.genres?.map(e => {
+                                      Gêneros: {content?.genres?.map( (e: IGenre) => {
                                           if (content.genres.indexOf(e) !== content.genres.length-1) { 
                                               return`${e.name}, `
                                           } else {

@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
+import { search, search_genre } from '../../global'
+import genres from '../../genres'
+import Item from '../Item'
 import './style.css'
-import genres from '../../genres.ts'
-import Item from '../Item/index.tsx'
-import { search, search_genre } from '../../global.ts'
-
 
 
 export default function Search() {
@@ -11,48 +10,56 @@ export default function Search() {
     const [ contents, setContents ] = useState([] as any[])
     const [ loading, setLoading ] = useState(false)
 
-    async function get_content(e:any) { 
-        const section:any = document.querySelector('section:has(.results)')
-        section.onscrollend = () => { if ( section.children[1].value !== '' && page ) { 
-            console.log(page)
-            get_content( {target: section.children[1]} )
-        } }
 
-
+    function get_content(e:any) { 
         if (e.target.value === '') { return false }
         else { setLoading(true) }
-        let query: [number | undefined, string][] = []
-        query.push( [ genres.movie.list.find(indice => indice.name.includes(e.target.value))?.id, 'movie' ] )
-        query.push( [ genres.tv.list.find(indice => indice.name.includes(e.target.value))?.id, 'tv' ] )
 
-        let responses: Promise<any>[] = []
-        for (let indice of query) {
-            if (indice[0]) {
-                responses.push( 
-                    search_genre(indice[0], indice[1], page).then(res => {
-                        if (res) {setContents(res)}
-                    } )
-                )
-            }
 
-            responses.push( 
-                search(e.target.value, indice[1], page).then(res => {
-                    if (res) {setContents(res)}
-                } )
-            )
+        const filmes = genres.movie.list.filter(indice => indice.name.toLowerCase().includes(e.target.value))
+        const series = genres.tv.list.filter(indice => indice.name.toLowerCase().includes(e.target.value))
+
+        filmes.forEach(async i => { 
+            const response = await search_genre(i.id, i.type, 1)
+            if (response?.length > 0) { setContents(prevState => [...prevState, response]) }
+        } )
+
+        series.forEach(async i => { 
+            const response = await search_genre(i.id, i.type, 1)
+            if (response?.length > 0) { setContents(prevState => [...prevState, response]) }
+        } )
+
+
+        if (filmes.length === 0 && series.length === 0) {
+            search(e.target.value, 'tv', page).then(res => handler(res) )
+            search(e.target.value, 'movie', page).then(res => handler(res) )
         }
 
-        Promise.all(responses).then( res => { 
-            setLoading(false)
-            if ( res[0]?.page === res[0]?.total_pages && res[1]?.page === res[1]?.total_pages ) {
-                let section:any = document.querySelector('section > .results')
-                section.onscrollend = undefined
-                page = 0
-                console.log('Search done')
 
-            } else { page++ }
+    }
 
-        } )
+    function handler(res: any) { 
+
+        const section: any = document.querySelector('section:has(.results)')
+        if ( res?.page === res?.total_pages ) {
+            section.onscrollend = undefined
+            page = 0
+            console.log('Search done')
+
+        } /*else { 
+            page = res?.page + 1
+            section.onscrollend = () => { if ( section.children[1].value !== '' && page ) { 
+                get_content( {target: section.children[1]} )
+                console.log("page: "+page)
+            } }
+
+        }*/
+
+        setContents(  prevState => [...prevState, ...res?.results].sort(() => { 
+            return Math.round(Math.random()) > 0? -1 : 0
+        } )  )
+
+        setLoading(false)
     }
 
 
@@ -66,6 +73,7 @@ export default function Search() {
         return () => { search = undefined }
 
     }, [] )
+
 
     return (
         <section className="w-full bg-zinc-950">

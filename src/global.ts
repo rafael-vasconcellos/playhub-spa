@@ -1,11 +1,7 @@
-import { API_KEY } from "./config"
 import { QueryClient } from "react-query"
+export const queryClient = new QueryClient()
+import { API_KEY } from "./config"
 
-export type IRouteInfo = { 
-    name: string | undefined
-    original_title: string | undefined
-    id: number
-}
 
 export const ProductionDetailsSchema = { 
     id: 0,
@@ -20,7 +16,7 @@ export const ProductionDetailsSchema = {
     release_date: '',
     status: '',
     tagline: '',
-    genres: [],
+    genres: [{name: 'genre1', id: 0}, {name: 'genre2', id: 0}],
     adult: null,
     overview: '',
     poster_path: '',
@@ -81,22 +77,7 @@ export type IProductionDetails = IProductionSchema & ITrendigs & {
 */
 
 
-
-
-
-
-export const queryClient = new QueryClient()
-export let routesInfo: IRouteInfo[] = []
-export let staticRoutesInfo: IRouteInfo[] = []
-
-export function get_routes(queryname: string) {
-    const id1 = routesInfo.find(e => e.name === queryname || e.original_title === queryname)?.id
-    const id2 = staticRoutesInfo.find(e => e.name === queryname || e.original_title === queryname)?.id
-    return id1 ?? id2
-}
-
-
-export function strip(s: string | undefined) {
+export function strip(s: string | undefined) { 
     return s?.toLowerCase().replaceAll(".", "").replaceAll(":", "").replaceAll(",", "").replaceAll('?', '').
     replaceAll('!', '').replaceAll('-', '')
 }
@@ -105,19 +86,8 @@ async function fetchData(url: string) {
     return await fetch(url, {headers: {"Authorization": API_KEY} } ).then(response => response.json())
 }
 
-async function query(url: string, type: string) {
-    return await fetchData(url)
-    .then(res => { 
-        if ( (res.results?.length ?? 0) > 0 ) {
-            res.results.forEach( (indice:any) => {indice.type = type} )
-            return (prevState: any) => [...prevState, ...res.results].sort( () => Math.round(Math.random()) )
-        }
 
-    } )
-}
-
-
-export async function routeSearch(type: string, queryname?: string) { 
+export async function routeSearch(type: string, queryname: string) { 
     return await fetchData(`https://api.themoviedb.org/3/search/${type}?query=${queryname}&include_adult=true&language=pt-BR&page=1`)
     .then(res => { 
   
@@ -141,12 +111,68 @@ export async function routeSearch(type: string, queryname?: string) {
     } )
 }
 
+export async function discover(categoryId: number, type: string) { 
+    return await fetchData(`https://api.themoviedb.org/3/discover/${type}?include_adult=true&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&with_genres=${categoryId}`)
+    .then(res => res?.results)
+}
+
+export async function get_images(id: number) {
+    return await fetchData(`https://api.themoviedb.org/3/movie/${id}/images`)
+}
+
+export async function get_season(id: number, season_number: number) { 
+    return await fetchData(`https://api.themoviedb.org/3/tv/${id}/season/${season_number}?language=pt-BR`)
+}
+
+// 10min
+export async function trending() {
+    return await fetchData(`https://api.themoviedb.org/3/trending/all/day?language=pt-BR`)
+}
+
+// 10min
+export async function production_details(
+    id: number | undefined, 
+    type: string | undefined, 
+    append?: string | undefined
+    ) { 
+
+    append = append ?? ''
+    return await fetchData(`https://api.themoviedb.org/3/${type}/${id}?language=pt-BR`+append)
+}
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+async function query(url: string, type: string) {
+    return await fetchData(url)
+    .then(res => { 
+        if ( (res.results?.length ?? 0) > 0 ) {
+            res?.results?.forEach( (indice:any) => {indice.type = type} )
+            return res
+        } else {
+            return []
+        }
+
+    } )
+}
 
 export async function search(
         queryname: string | number, 
@@ -158,31 +184,10 @@ export async function search(
 }
 
 export async function search_genre(
-        value: string | number, 
+        categoryId: string | number, 
         type: string, 
         page: number
     ) { 
 
-    return await query(`https://api.themoviedb.org/3/discover/${type}?include_adult=true&include_video=false&language=pt-BR&page=${page}&sort_by=popularity.desc&with_genres=${value}`, type)
-}
-
-export async function discover(categoryId: number, type: string) { 
-    return await fetchData(`https://api.themoviedb.org/3/discover/${type}?include_adult=true&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&with_genres=${categoryId}`).then(res => res?.results)
-}
-
-export async function get_images(id: number) {
-    return await fetchData(`https://api.themoviedb.org/3/movie/${id}/images`)
-}
-
-export async function get_season(id: number, season_number: number) { 
-    return await fetchData(`https://api.themoviedb.org/3/tv/${id}/season/${season_number}?language=pt-BR`)
-}
-
-export async function trending() {
-    return await fetchData(`https://api.themoviedb.org/3/trending/all/day?language=pt-BR`)
-}
-
-export async function production_details(id: number | undefined, type: string | undefined, append?: string | undefined) { 
-    append = append ?? ''
-    return await fetchData(`https://api.themoviedb.org/3/${type}/${id}?language=pt-BR`+append)
+    return await query(`https://api.themoviedb.org/3/discover/${type}?include_adult=true&include_video=false&language=pt-BR&page=${page}&sort_by=popularity.desc&with_genres=${categoryId}`, type)
 }

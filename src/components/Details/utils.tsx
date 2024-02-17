@@ -1,31 +1,6 @@
-import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import { routesInfo, strip } from "../../global"
 import { path } from "../utils"
 import { IProductionDetails } from "../../global"
-
-export const ContentSchema = { 
-    id: 0,
-    title: '',
-    name: '',
-    original_title: '',
-    original_name: '',
-    genres: [{name: 'genre1', id: 0}, {name: 'genre2', id: 0}],
-    adult: false,
-    overview: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, placeat veniam quas dolor facilis soluta, consectetur magnam ut eos architecto similique eius porro amet possimus commodi rerum nesciunt facere eum.',
-    vote_average: 7.814,
-    popularity: 2947.91,
-    runtime: 92,
-    release_date: '2022',
-    poster_path: '',
-    backdrop_path: '',
-    video: '',
-    production_companies: [ {name: ''}, {name: ''} ]
-
-    // tagline?
-}
-
-export type Content = typeof ContentSchema
 
 
 export const screen = { 
@@ -50,31 +25,25 @@ export const screen = {
 
 
 export const DetailsButtons: React.FC< {
-        type: string | undefined, 
-        content: Content, 
+        type: string | undefined,
+        content: IProductionDetails, 
         setScreen: any
-    } > = function( {type, content, setScreen} ) {
+    } > = function( {type, content, setScreen} ) { 
 
-    useEffect( () => { 
-        const obj = {
-            name: strip(content?.title) ?? strip(content?.name),
-            original_title: strip(content?.original_title) ?? strip(content?.original_name),
-            id: content.id
-        }
-        const { name, original_title, id } = obj
-        if ( name && original_title && id && !routesInfo.includes(obj) ) { 
-            routesInfo.length = 0
-            routesInfo.push(obj)
-        }
 
-    }, [content] )
+    const url = (type && content.id)? path(
+        type, 
+        content.id, 
+        content.title ?? content.name, 
+        content.original_title ?? content.original_name, 
+    ) : ''
 
     return (
         <>
             {/* botões */}
             <div className="flex justify-between w-full px-2 py-3"> 
                     <div className="flex gap-2">
-                            <Link to={ path(type, content.title ?? content.name, content.original_title ?? content.original_name) }>
+                            <Link to={ url }>
                                 <button className="p-2 rounded-full border-zinc-600 border-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />

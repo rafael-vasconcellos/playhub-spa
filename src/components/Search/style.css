@@ -16,6 +16,7 @@ section > #search {
 /*.results:has(div), div:has(svg:not(.hidden)) ~ .results */
 section:has(.results > div), section:has(div > svg) {
     position: fixed;
+    top: 0; left: 0;
     padding-top: 7%;
     width: 100vw;
     z-index: 1;

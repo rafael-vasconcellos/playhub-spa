@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useQuery } from "react-query";
 import { display } from "../utils";
 import { get_season } from "../../global";
@@ -7,16 +6,13 @@ import { get_season } from "../../global";
 const EpisodesSchema = { episodes: [], season_number: 0, }
 
 const Seasons: React.FC<{seasons: any[], id: number}> = function( {seasons, id} ) { 
-    const [ episodes, setEpisodes ] = useState<typeof EpisodesSchema[]>( [EpisodesSchema] )
-    useQuery('get epidodes info', async() => { 
+    const { data: episodes } = useQuery('get epidodes info', async() => { 
         const promises = seasons.map(indice => {
             return get_season(id, indice.season_number)
         } );
 
-        Promise.all(promises).then(res => { 
-            setEpisodes(res)
-        } )
-    } ) 
+        Promise.all(promises).then(res => res)
+    }, {staleTime: Infinity, placeholderData: [EpisodesSchema] as any} ) 
 
 
     return ( 
@@ -31,7 +27,7 @@ const Seasons: React.FC<{seasons: any[], id: number}> = function( {seasons, id} 
             </div>
 
             <div className="episodes">
-                { episodes.map(e => 
+                { episodes?.map( (e: typeof EpisodesSchema) => 
 
                     <div className={`temp${e.season_number} hidden`} key={`temp${e.season_number}`}>
                         { e.episodes.map( (indice:any) => 
