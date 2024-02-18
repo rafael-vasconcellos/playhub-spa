@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useQuery } from "react-query"
-import { routeSearch, production_details, trending } from "../global"
+import { route_search, production_details, trending } from "../global"
 import { IProductionDetails, ProductionDetailsSchema } from "../global"
 import './style.css'
 import Category from "../components/Category"
@@ -34,7 +34,7 @@ const Production: React.FC<{type: string}> = function( {type} ) {
                     ''
                 ).replaceAll('-', ' ') : undefined
     
-            if (!params_id && queryname) { return await routeSearch(type, queryname).then(res => res.id) } 
+            if (!params_id && queryname) { return await route_search(type, queryname).then(res => res.id) } 
             else { return params_id }
         }
 

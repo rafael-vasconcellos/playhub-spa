@@ -32,5 +32,7 @@ src/guest_auth.ts
 
 dist/*.html
 dist/*.js
+dist/*.svg
 dist/**/*.js
 dist/**/*.css
+dist/**/*.svg
