@@ -3,7 +3,7 @@ import Score from "../components/Score"
 import { Show } from "../components/utils"
 import { IProductionDetails } from "../global"
 
-const Test: React.FC<{data: IProductionDetails | any}> = function( {data} ) { 
+const Card: React.FC<{data: IProductionDetails | any}> = function( {data} ) { 
     const animate = data? '' : "animate-pulse"
     const background = data? '' : "text-zinc-500 bg-zinc-500"
 
@@ -60,4 +60,4 @@ const Test: React.FC<{data: IProductionDetails | any}> = function( {data} ) {
 }
 
 
-export { Test }
+export { Card }

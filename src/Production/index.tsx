@@ -11,7 +11,7 @@ import Reviews from "../components/Reviews"
 import Medias from "../components/Medias"
 import Staff from "../components/Staff"
 import Navbar from "../components/Navbar"
-import { Test } from "./utils"
+import { Card } from "./utils"
 import { Show } from "../components/utils"
 
 
@@ -73,8 +73,8 @@ const Production: React.FC<{type: string}> = function( {type} ) {
     return (
         <>
             <Navbar />
-            <Show when={data?.id !== undefined && data.id !== 0 && data?.id === query} fallback={<Test data={null} />}>
-                <Test data={data} />
+            <Show when={data?.id !== undefined && data.id !== 0 && data?.id === query} fallback={<Card data={null} />}>
+                <Card data={data} />
             </Show>
 
             <div className="relative">
