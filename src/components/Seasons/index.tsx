@@ -11,7 +11,7 @@ const Seasons: React.FC<{seasons: any[], id: number}> = function( {seasons, id} 
             return get_season(id, indice.season_number)
         } );
 
-        Promise.all(promises).then(res => res)
+        return Promise.all(promises).then(res => res)
     }, {staleTime: Infinity, placeholderData: [EpisodesSchema] as any} ) 
 
 
