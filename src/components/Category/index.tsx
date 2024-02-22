@@ -51,7 +51,7 @@ const Category:React.FC<categoryProps> = function( {categoryName, categoryId, ty
                             </button>
                         </div>
 
-                        <div className='flex gap-5 items-start px-3 py-4 overflow-x-scroll overflow-y-hidden scroll-smooth'>
+                        <div className='flex gap-5 items-start px-3 py-4 overflow-x-scroll overflow-y-visible scroll-smooth'>
 
                             {data?.map( (e: IProductionDetails) => <Item title={e.title ?? e.name} pic={e.poster_path} id={e.id} type={type ?? e.media_type} key={`${e.id ?? Math.random()}`} />)}
 
