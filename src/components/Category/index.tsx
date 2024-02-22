@@ -8,9 +8,9 @@ import './style.css'
 
 type categoryProps = { 
     categoryName: string,
-    categoryId: number | null,
+    categoryId?: number,
     type?: string,
-    content?: any[]
+    content?: IProductionDetails[]
 }
 
 const Category:React.FC<categoryProps> = function( {categoryName, categoryId, type, content} ) { 

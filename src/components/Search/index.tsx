@@ -21,12 +21,12 @@ export default function Search() {
 
         filmes.forEach(async i => { 
             const response = await search_genre(i.id, i.type, 1)
-            if (response?.length > 0) { setContents(prevState => [...prevState, response]) }
+            if ( (response?.results?.length ?? 0) > 0 ) { setContents(prevState => [...prevState, response.results]) }
         } )
 
         series.forEach(async i => { 
             const response = await search_genre(i.id, i.type, 1)
-            if (response?.length > 0) { setContents(prevState => [...prevState, response]) }
+            if ((response?.results?.length ?? 0) > 0) { setContents(prevState => [...prevState, response.results]) }
         } )
 
 
@@ -55,7 +55,7 @@ export default function Search() {
 
         }*/
 
-        setContents(  prevState => [...prevState, ...res?.results].sort(() => { 
+        setContents(  prevState => [...prevState ?? [], ...res?.results ?? []].sort(() => { 
             return Math.round(Math.random()) > 0? -1 : 0
         } )  )
 

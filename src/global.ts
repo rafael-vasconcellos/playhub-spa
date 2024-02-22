@@ -1,6 +1,6 @@
-import { API_KEY } from "./config"
 import { QueryClient } from "react-query"
 export const queryClient = new QueryClient()
+import { API_KEY } from "./config"
 
 
 export const ProductionDetailsSchema = { 
@@ -69,6 +69,10 @@ export type IDetailsResumed = {
     "adult": boolean
     "backdrop_path": string
     "genre_ids": number[]
+
+    name: string
+    original_name: string
+    media_type: string
 }
 
 export type IDiscover = {
@@ -77,6 +81,7 @@ export type IDiscover = {
     total_results: number
     results: IDetailsResumed[]
 }
+
 
 /*
     type Content = { 
@@ -202,7 +207,7 @@ async function query(url: string, type: string) {
             res?.results?.forEach( (indice:any) => {indice.type = type} )
             return res
         } else {
-            return []
+            return {}
         }
 
     } )

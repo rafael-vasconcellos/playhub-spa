@@ -39,7 +39,7 @@ const Profile: React.FC<profileProps> = function( {href, children} ) {
               }
               } className='hidden'/>
 
-              <ul className={`py-3 w-44 h-56 bg-zinc-600 rounded-lg absolute top-14 right-0 ${menuVisible}`}>
+              <ul className={`py-3 w-44 h-56 bg-zinc-600 rounded-lg absolute z-50 top-14 right-0 ${menuVisible}`}>
                   <li className={menuItems}>Conta</li>
                   <li className={menuItems}>Minha lista</li>
                   <li className={menuItems}>Configurações</li>

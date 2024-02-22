@@ -25,17 +25,16 @@ const ContentSchema = Object.assign(ProductionDetailsSchema, {
     release_date: '2022',
 } )
 
-const Details:React.FC<detailProps> = function( { type, id } ) { 
+const Details: React.FC<detailProps> = function( { type, id } ) { 
     const [ screen_status, setScreen ] = useState( screen.normal )
 
     const { data: content } = useQuery(`${id} content details`, async() => {
               //await new Promise( resolve => setTimeout(resolve, 3000) )
               return await production_details(id, type).then(res => res)
 
-        }, { staleTime: 1000*180 /* 3min */, placeholderData: ContentSchema }
-    )
+    }, { staleTime: Infinity, placeholderData: ContentSchema }   )
 
-    const skeleton = !content.id? 'text-zinc-500 bg-zinc-500 animate-pulse' : ''
+    const skeleton = !content?.id? 'text-zinc-500 bg-zinc-500 animate-pulse' : ''
 
 
     return (
@@ -46,30 +45,30 @@ const Details:React.FC<detailProps> = function( { type, id } ) {
 
 
                       {/* banner */}
-                      <div className={`${screen_status.banner} ${skeleton} bg-zinc-500 bg-cover w-full`} style={ {backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${content.backdrop_path})`} } />
+                      <div className={`${screen_status.banner} ${skeleton} bg-zinc-500 bg-cover w-full`} style={ {backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${content?.backdrop_path})`} } />
                       <DetailsButtons type={type} content={content} setScreen={setScreen} />
 
 
                       <div className="relative">
                           <div className="w-full px-3 py-4"> {/* primeira coluna */}
                                   <div>
-                                      {content.id !== 0 && <span className={`mr-2 font-bold p-1 ${content.adult? "bg-zinc-950" : "bg-sky-500"} text-zinc-100`}>PG-{content.adult? "18":"13"}</span> }
+                                      {content?.id !== 0 && <span className={`mr-2 font-bold p-1 ${content?.adult? "bg-zinc-950" : "bg-sky-500"} text-zinc-100`}>PG-{content?.adult? "18":"13"}</span> }
                                       <span className={skeleton}> 
-                                        { !Number.isNaN(Math.floor(content.runtime / 60)) ?
-                                            Math.floor(content.runtime/60)+'h' : '' }
-                                        {(  content.runtime%60 !== 0 && !Number.isNaN(content.runtime % 60)  )? 
-                                            content.runtime%60+'min' : ''}
+                                        { !Number.isNaN(Math.floor(content?.runtime / 60)) ?
+                                            Math.floor(content?.runtime/60)+'h' : '' }
+                                        {(  content?.runtime%60 !== 0 && !Number.isNaN(content?.runtime % 60)  )? 
+                                            content?.runtime%60+'min' : ''}
                                       </span><br/>
                                   </div>
 
-                                  <p className={`my-1 ${skeleton}`}>{content.release_date?.slice(0, 4)}</p>
+                                  <p className={`my-1 ${skeleton}`}>{content?.release_date?.slice(0, 4)}</p>
 
                                   <ul className={`flex gap-2 my-2 flex-wrap ${screen_status.stats}`}>
                                           {content?.genres?.map( (e: IGenre) => <li className={skeleton} key={e.id? e.id : Math.random()}> {e.name} </li>)}
                                   </ul>
 
-                                  <div className={`py-2 ${skeleton}`}>Média: {content.vote_average}<br/>Popularidade: {content.popularity}</div>
-                                  <p className={`${screen_status.more} py-2`}>{content.overview}</p>
+                                  <div className={`py-2 ${skeleton}`}>Média: {content?.vote_average}<br/>Popularidade: {content?.popularity}</div>
+                                  <p className={`${screen_status.more} py-2`}>{content?.overview}</p>
                           </div>
 
 
@@ -77,7 +76,7 @@ const Details:React.FC<detailProps> = function( { type, id } ) {
                           <div className={`${screen_status.more} absolute top-0 right-0 w-1/2 px-2 py-8 flex flex-col gap-2`}>
                                   <div>
                                       Produção: {content?.production_companies?.map( (e: IGenre) => {
-                                          if (content.production_companies.indexOf(e) !== content.production_companies.length-1) { 
+                                          if (content?.production_companies.indexOf(e) !== content?.production_companies.length-1) { 
                                               return`${e.name}, `
                                           } else {
                                               return`${e.name}`
@@ -86,7 +85,7 @@ const Details:React.FC<detailProps> = function( { type, id } ) {
                                   </div>
                                   <div>
                                       Gêneros: {content?.genres?.map( (e: IGenre) => {
-                                          if (content.genres.indexOf(e) !== content.genres.length-1) { 
+                                          if (content?.genres.indexOf(e) !== content?.genres.length-1) { 
                                               return`${e.name}, `
                                           } else {
                                               return e.name

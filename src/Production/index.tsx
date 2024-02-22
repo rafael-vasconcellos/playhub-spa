@@ -11,7 +11,7 @@ import Reviews from "../components/Reviews"
 import Medias from "../components/Medias"
 import Staff from "../components/Staff"
 import Navbar from "../components/Navbar"
-import { Card } from "./utils"
+import { ProductionCard } from "./utils"
 import { Show } from "../components/utils"
 
 
@@ -20,34 +20,33 @@ const Production: React.FC<{type: string}> = function( {type} ) {
     const { production_name } = useParams()
     const [ data, setData ] = useState(ProductionDetailsSchema as IProductionDetails)
 
-    const { data: query } = useQuery('query '+production_name, async() => { 
+    const { data: query_id } = useQuery('query '+production_name, async() => { 
+            const splited_name = production_name?.split('-')
+            const params_id = splited_name?
+                Number( splited_name[splited_name.length-1] )
+                : undefined
 
-        const splited_name = production_name?.split('-')
-        const params_id = splited_name?
-            Number( splited_name[splited_name.length-1] )
-              : undefined
+            async function get_id() { 
+                const queryname = typeof production_name === 'string'? 
+                    production_name?.replace(
+                        params_id? `${params_id}` : '', 
+                        ''
+                    ).replaceAll('-', ' ') : undefined
+        
+                if (!params_id && queryname) { return await route_search(type, queryname).then(res => res.id) } 
+                else { return params_id }
+            }
 
-        async function get_id() { 
-            const queryname = typeof production_name === 'string'? 
-                production_name?.replace(
-                    params_id? `${params_id}` : '', 
-                    ''
-                ).replaceAll('-', ' ') : undefined
-    
-            if (!params_id && queryname) { return await route_search(type, queryname).then(res => res.id) } 
-            else { return params_id }
-        }
-
-        const production_id = await get_id()
-        return production_id
+            const production_id = await get_id()
+            return production_id
 
     }, {staleTime: Infinity} )
 
 
     const { refetch } = useQuery(production_name+' page', async() => { 
-      if (query) { 
+      if (query_id) { 
         const append = "&append_to_response=videos%2Cimages%2Crecommendations%2Csimilar%2Creviews%2Cseasons%2Ccredits"
-        const response = await production_details(query, type, append)
+        const response = await production_details(query_id, type, append)
         console.log(response)
         setData(response)
       }
@@ -63,7 +62,7 @@ const Production: React.FC<{type: string}> = function( {type} ) {
 
   
 
-    useEffect(() => { refetch() }, [query] )
+    useEffect(() => { refetch() }, [query_id] )
     useEffect(() => {
         let el = document.querySelector('title')
         if (el) {el.innerText = data?.title ?? data?.name}
@@ -73,29 +72,35 @@ const Production: React.FC<{type: string}> = function( {type} ) {
     return (
         <>
             <Navbar />
-            <Show when={data?.id !== undefined && data.id !== 0 && data?.id === query} fallback={<Card data={null} />}>
-                <Card data={data} />
+            <Show when={data?.id !== undefined && data.id !== 0 && data?.id === query_id} fallback={<ProductionCard data={null} />}>
+                <ProductionCard data={data} />
             </Show>
 
             <div className="relative">
                 { trendings?.length > 0 && <Aside name={'Trending'} content={trendings?.slice(0, 7)} /> }
                 <section className="w-4/5">
-                    {data.seasons?.length > 0 && query === data.id && 
+                    {data.seasons?.length > 0 && query_id === data.id && 
                         <Seasons seasons={data.seasons} id={data.id} /> }
 
-                    <Show when={data?.credits && query === data.id} fallback={<Staff />}>
+                    <Show when={data?.credits && query_id === data.id} fallback={<Staff />}>
                         <Staff staff={data.credits} production_companies={data.production_companies} />
                     </Show>
 
-                    {data.videos?.results?.length > 0 && query === data.id && 
+                    {data.videos?.results?.length > 0 && query_id === data.id && 
                         <Medias id={data.id} videos={data.videos.results} /> }
 
-                    <Show when={query === data.id}  fallback={<Category categoryName="Placeholder" categoryId={null} />} >
+                    <Show when={ (query_id === data.id) && query_id }  
+                    fallback={
+                        <>
+                            <Category categoryName="Placeholder" categoryId={null} />
+                            <Category categoryName="Placeholder" categoryId={null} />
+                        </>
+                    }>
                         { data.recommendations?.results?.length > 0 && <Category content={data.recommendations.results} categoryName="Recomendações" categoryId={data.id} /> }
                         { data.similar?.results?.length > 0 && <Category content={data.similar.results} categoryName="Similares" categoryId={data.id} type={type} /> }
                     </Show>
 
-                    { data.reviews && query === data.id && <Reviews obj={data.reviews} /> }
+                    { data.reviews && query_id === data.id && <Reviews obj={data.reviews} /> }
                 </section>
             </div>
         </>
