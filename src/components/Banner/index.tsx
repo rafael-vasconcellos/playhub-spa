@@ -82,12 +82,12 @@ export default function Banner() {
             }
         }
 
-        const timeout = setTimeout(func, 3000)
+        func()
         const interval = setInterval(func, 7000 )
 
         return () => {
             clearInterval(interval)
-            clearTimeout(timeout)
+            //clearTimeout(timeout)
         }
 
     }, [data] )

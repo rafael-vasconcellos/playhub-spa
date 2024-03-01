@@ -19,9 +19,9 @@ const Category:React.FC<categoryProps> = function( {categoryName, categoryId, ty
 
     const { data } = useQuery(`discover shows ${type} ${categoryName} ${categoryId}`, async() => { 
         if (type && categoryId && !content) { 
-            await new Promise( resolve => setTimeout(resolve, 3000) )
+            //await new Promise( resolve => setTimeout(resolve, 3000) )
             const response = await discover(categoryId, type)
-            return response
+            return response?.length? response : placeholder
 
         } else if (content) { return content }
         else { return placeholder }

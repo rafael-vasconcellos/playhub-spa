@@ -8,7 +8,6 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-#dist
 dist-ssr
 *.local
 
@@ -23,16 +22,11 @@ dist-ssr
 *.sln
 *.sw?
 
-# project's
 
+# project's
 src/api
 src/api/*.env
 src/config.ts
 src/guest_auth.ts
 
-dist/*.html
-dist/*.js
-dist/*.svg
-dist/**/*.js
-dist/**/*.css
-dist/**/*.svg
+dist

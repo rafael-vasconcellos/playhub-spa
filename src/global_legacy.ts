@@ -1,6 +1,6 @@
 import { QueryClient } from "react-query"
 export const queryClient = new QueryClient()
-const API_URL = '' // https://playhub-six.vercel.app  (CORS)
+import { API_KEY } from "./config"
 
 
 export const ProductionDetailsSchema = { 
@@ -118,7 +118,7 @@ export function strip(s: string | undefined) {
 }
 
 async function fetchData(url: string) {
-    return await fetch(url).then( response => { 
+    return await fetch(url, {headers: {"Authorization": API_KEY} } ).then( response => { 
         if (response.status === 200) { return response.json() }
         else { return {} as {[key: string]: any} }
     } ).catch( () => null )
@@ -126,35 +126,36 @@ async function fetchData(url: string) {
 
 // /api/production/images
 export async function get_images(id: number) {
-    return await fetchData(API_URL+`/api/production/images?id=${id}`)
+    return await fetchData(`https://api.themoviedb.org/3/movie/${id}/images`)
 }
 
 // /api/production/season
 export async function get_season(id: number, season_number: number) { 
-    return await fetchData(API_URL+`/api/production/season?id=${id}&season=${season_number}`)
+    return await fetchData(`https://api.themoviedb.org/3/tv/${id}/season/${season_number}?language=pt-BR`)
 }
 
 // /api/production/details
 export async function production_details(
     id: number | undefined, 
     type: string | undefined, 
-    extend?: boolean | string
+    append?: string | undefined
     ) { 
 
-    extend = extend? "&extend=true" : ''
-    return await fetchData(API_URL+`/api/production/details?type=${type}&id=${id}`+extend)
+    append = append ?? ''
+    return await fetchData(`https://api.themoviedb.org/3/${type}/${id}?language=pt-BR`+append)
 }
 
 // 10min
 // /api/discover
 export async function discover(genreId: number, type: string) { 
-    return await fetchData(API_URL+`/api/discover?type=${type}&genreid=${genreId}`)
+    return await fetchData(`https://api.themoviedb.org/3/discover/${type}?include_adult=true&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&with_genres=${genreId}`)
+    .then(res => res?.results)
 }
 
 // 10min
 // /api/trending
 export async function trending() {
-    return await fetchData(API_URL+`/api/trending`)
+    return await fetchData(`https://api.themoviedb.org/3/trending/all/day?language=pt-BR`)
 }
 
 
@@ -177,6 +178,43 @@ export async function trending() {
 
 
 
+
+export async function route_search(type: string, queryname: string) { 
+    return await fetchData(`https://api.themoviedb.org/3/search/${type}?query=${queryname}&include_adult=true&language=pt-BR&page=1`)
+    .then(res => { 
+  
+        if ((res.results?.length ?? 0) > 0 && queryname) { 
+            let arr:any[] = []
+            for (let indice of res.results) { 
+                let title: string | undefined = indice?.title ?? indice?.name
+                let original: string | undefined = indice?.original_title ?? indice?.original_name
+                title = strip(title)
+                original = strip(original)
+                if ( title === queryname || original === queryname ) { 
+                  arr.push(indice)
+                } 
+            }
+  
+            if (arr.length > 0 ) {return arr[0]} else {console.log(arr)}
+  
+  
+        }
+  
+    } )
+}
+
+async function query(url: string, type: string) {
+    return await fetchData(url)
+    .then(res => { 
+        if ( (res.results?.length ?? 0) > 0 ) {
+            res?.results?.forEach( (indice:any) => {indice.type = type} )
+            return res
+        } else {
+            return {}
+        }
+
+    } )
+}
 
 // /api/search
 export async function search(
@@ -185,7 +223,7 @@ export async function search(
         page: number
     ) {
 
-    return await fetchData(API_URL+`/api/search?type=${type}&q=${queryname}&page${page ?? 1}`)
+    return await query(`https://api.themoviedb.org/3/search/${type}?query=${queryname}&include_adult=true&language=pt-BR&page=${page}`, type)
 }
 
 // 10min
@@ -195,9 +233,5 @@ export async function search_genre(
         page: number
     ) { 
 
-    return await fetchData(API_URL+`/api/search?type=${type}&q=${genreId}&page=${page ?? 1}`)
-}
-
-export async function route_search(type: string, queryname: string) {
-    return await fetchData(API_URL+`/api/search?type=${type}&q=${queryname}&page=0`)
+    return await query(`https://api.themoviedb.org/3/discover/${type}?include_adult=true&include_video=false&language=pt-BR&page=${page}&sort_by=popularity.desc&with_genres=${genreId}`, type)
 }

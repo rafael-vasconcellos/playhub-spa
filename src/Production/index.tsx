@@ -33,7 +33,7 @@ const Production: React.FC<{type: string}> = function( {type} ) {
                         ''
                     ).replaceAll('-', ' ') : undefined
         
-                if (!params_id && queryname) { return await route_search(type, queryname).then(res => res.id) } 
+                if (!params_id && queryname) { return await route_search(type, queryname).then(res => res?.id) } 
                 else { return params_id }
             }
 
@@ -55,7 +55,7 @@ const Production: React.FC<{type: string}> = function( {type} ) {
 
 
     const { data: trendings } = useQuery('get trendings', async() => {
-      return await trending().then(res => res.results)
+      return await trending().then(res => res?.results)
 
     }, { staleTime: 1000*600 /* 10min */ }
   )
@@ -72,35 +72,35 @@ const Production: React.FC<{type: string}> = function( {type} ) {
     return (
         <>
             <Navbar />
-            <Show when={data?.id !== undefined && data.id !== 0 && data?.id === query_id} fallback={<ProductionCard data={null} />}>
+            <Show when={data?.id !== undefined && data?.id !== 0 && data?.id === query_id} fallback={<ProductionCard data={null} />}>
                 <ProductionCard data={data} />
             </Show>
 
             <div className="relative">
                 { trendings?.length > 0 && <Aside name={'Trending'} content={trendings?.slice(0, 7)} /> }
                 <section className="w-4/5">
-                    {data.seasons?.length > 0 && query_id === data.id && 
-                        <Seasons seasons={data.seasons} id={data.id} /> }
+                    {data?.seasons?.length > 0 && query_id === data?.id && 
+                        <Seasons seasons={data?.seasons} id={data?.id} /> }
 
-                    <Show when={data?.credits && query_id === data.id} fallback={<Staff />}>
-                        <Staff staff={data.credits} production_companies={data.production_companies} />
+                    <Show when={data?.credits && query_id === data?.id} fallback={<Staff />}>
+                        <Staff staff={data?.credits} production_companies={data?.production_companies} />
                     </Show>
 
-                    {data.videos?.results?.length > 0 && query_id === data.id && 
-                        <Medias id={data.id} videos={data.videos.results} /> }
+                    {data?.videos?.results?.length > 0 && query_id === data?.id && 
+                        <Medias id={data?.id} videos={data?.videos.results} /> }
 
-                    <Show when={ (query_id === data.id) && query_id }  
+                    <Show when={ (query_id === data?.id) && query_id }  
                     fallback={
                         <>
                             <Category categoryName="Placeholder" categoryId={null} />
                             <Category categoryName="Placeholder" categoryId={null} />
                         </>
                     }>
-                        { data.recommendations?.results?.length > 0 && <Category content={data.recommendations.results} categoryName="Recomendações" categoryId={data.id} /> }
-                        { data.similar?.results?.length > 0 && <Category content={data.similar.results} categoryName="Similares" categoryId={data.id} type={type} /> }
+                        { data?.recommendations?.results?.length > 0 && <Category content={data?.recommendations.results} categoryName="Recomendações" categoryId={data?.id} /> }
+                        { data?.similar?.results?.length > 0 && <Category content={data?.similar.results} categoryName="Similares" categoryId={data?.id} type={type} /> }
                     </Show>
 
-                    { data.reviews && query_id === data.id && <Reviews obj={data.reviews} /> }
+                    { data?.reviews && query_id === data?.id && <Reviews obj={data?.reviews} /> }
                 </section>
             </div>
         </>
